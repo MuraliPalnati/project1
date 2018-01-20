@@ -1,0 +1,37 @@
+﻿
+
+<script src="~/scripts/MCTR/RoleBU.js"></script>
+<div id='stackedModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='stackedModalContent'></div>
+        </div>
+    </div>
+</div>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">MCTR Role BU</h4>
+</div>
+<div class="modal-body">
+    <section class="row">
+        <section class="col-md-12" id="modalMsg"></section>
+        <section class="col-md-12">
+            <p>Authorizied Group and Business Units for processing and approval</p>
+            <table id="buGrid"></table>
+        </section>
+        <section class="col-md-7">
+            @using MCTR.Web.Security;
+            @Html.Hidden("SessionBems", @SessionPerister.BEMSID)
+            <p class="text-warning"><small>** in BU field indicates all Business Units in group are authorizied</small></p>
+        </section>
+        <section class="col-md-12">
+            <section class="align-right m-t-5">
+                <button href="#" class="btn btn-default btn-sm" id="addButton">Add</button>
+                <button href="#" class="btn btn-default btn-sm" id="saveButton">Save</button>
+                <button href="#" class="btn btn-default btn-sm" id="deleteButton">Delete</button>
+                <button href="#" class="btn btn-default btn-sm" data-dismiss="modal" id="cancelButton">Close</button>
+            </section>
+        </section>
+    </section>
+
+</div>

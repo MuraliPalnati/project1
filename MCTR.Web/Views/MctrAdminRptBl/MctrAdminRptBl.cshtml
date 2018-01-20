@@ -1,0 +1,127 @@
+﻿<script src="~/scripts/MCTR/AdminReports.js"></script>
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Report Menu  &gt; Open MCTRs</section>
+    <h4>Excel Only Reporting - Administration</h4>
+    <hr>
+</section>
+
+    <section class="col-md-12 m-t-50 form-horizontal">
+        <section id="dialog-box"></section>
+        <section class="row">
+            <section class="col-md-3 align-center">
+                <section class=" admin-min-height">
+                    <label class="col-md-12 control-label filler-label"> A</label>
+                    <label class="control-label"> MCTR ROLE BU Access</label><br />
+                    <label class="control-label">"Auth BU" Active Users</label>
+                    <section class="align-center mt-10">
+                        <section class="border-bottom"></section>
+                    </section>
+
+                    <section class="form-group">
+                        <section class="row">
+                            <label class="control-label">Select Business Unit</label>
+                        </section>
+                        <section class="row no-gutter align-center">
+                            <section class="col-md-3"></section>
+                            <section class="col-md-2 mr-3">
+                                <input class="input-large form-control" id="BusinessGroup" disabled/>
+                            </section>
+                            <section class="col-md-3  mr-3">
+                                <input class="input-large form-control" id="BusinessUnit" disabled/>
+                            </section>
+                            <section class="col-md-1">
+                                <button  data-toggle="modal" data-target="#mctrModal" data-backdrop="static" href=@Url.Action("getAdminRptRgBuLOV", "MctrRptsAdmnBl") class="btn btn-group btn-xs"><span class="glyphicon glyphicon-edit font-15"></span></button>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section class="form-group">
+                    <iframe id="authbuDownloadFrame" style="display:none"></iframe>
+                    <button href="#" class="btn btn-primary" id="authBUDwnldBtn">Download To Excel</button>
+                </section>
+            </section>
+
+            <section class="col-md-2">
+                <section class=" admin-min-height">
+                    <label class="col-md-12 control-label filler-label">A</label>
+                    <label class="col-md-12 control-label filler-label"> A</label>
+                    <label class="control-label">MCTR ROLE Access</label>
+                    <section class="align-center mt-10">
+                        <section class="border-bottom"></section>
+                    </section>
+                    <section class="form-group">
+                        <div class="radio">
+                            <label class="col-md-10"><input name="roleaccess" value="RAU" id="roleActiveUsers" type="radio" />Role Active Users</label>
+                            <label class="col-md-10"><input name="roleaccess" value="RAS" id="roleActiveState" type="radio" /> Role Active State</label>
+                            <label class="col-md-10"><input name="roleaccess" value="RCM" id="roleChangesMade" type="radio" /> Role Changes Made</label>
+                        </div>
+                        <label class="control-label m-l-20"><input class="col-md-3 input-small mr-3  form-control" id="f_days" />Days Back</label>
+                    </section>
+                </section>
+                <section class="form-group">
+                    <iframe id="roleaccessDownloadFrame" style="display:none"></iframe>
+                    <button href="#" class="btn btn-primary" id="roleaccessDwnldBtn">Download To Excel</button>
+                </section>
+            </section>
+
+            <section class="col-md-2">
+                <section class="admin-min-height">
+                    <label class="col-md-12 control-label filler-label">A</label>
+                    <label class="col-md-12 control-label filler-label"> A</label>
+                    <label class="control-label">EO&T Weekly Metrics</label>
+                    <section class="align-center mt-10">
+                        <section class="border-bottom"></section>
+                    </section>
+                    <section class="form-group">
+                        <section class="col-md-12 align-center">
+                            <label class="control-label mr-10">Select Journal Date</label>
+                        </section>
+                        <section class="col-md-12">
+                            <section class="row no-gutter">
+                                <section class="col-md-9 mr-3">
+                                    <input class="form-control"  id="JournalDate" disabled/>
+                                </section>
+                                <section class="col-md-1">
+                                    <button data-toggle="modal" data-target="#mctrModal" data-backdrop="static" href=@Url.Action("getAdminRgToDateLOV", "MctrRptsAdmnBl")  class="btn btn-group btn-xs"><span class="glyphicon glyphicon-edit font-15"></span></button>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section class="form-group align-center">
+                    <iframe id="metricsDownloadFrame" style="display:none"></iframe>
+                    <button href="#" class="btn btn-primary" id="metricsDwnldBtn">Download To Excel</button>
+                </section>
+            </section>
+            <section class="col-md-3">
+                <section class="admin-min-height">
+                    <section class="row align-center">
+                        <label class="control-label"> MCTR ROLES</label> <br />
+                        <label class="control-label"> User Access Reviews</label>
+                        <br />
+                        <label class="control-label mr-10">As Of: </label>
+                        <input class="form-control" id="asOfInput" value="@System.DateTime.Now" readonly />
+                    </section>
+
+                    <section class="align-center col-md-12 mt-10">
+                        <section class="border-bottom"></section>
+                    </section>
+
+                    <section class="form-group">
+                        <section class="radio">
+                            <ul>
+                                <li><label class="col-md-10"><input name="useraccess" id="roleNotificationMaster" value="RNM" type="radio" />Role Notifications Masters</label></li>
+                                <li><label class="col-md-10"><input name="useraccess" id="roleModification" value="RM" type="radio" />Role Modifications</label></li>
+                                <li><label class="col-md-10"><input name="useraccess" id="roleInactivations" value="RI" type="radio" /> Role Inactivations</label></li>
+                                <li><label class="col-md-10"><input name="useraccess" id="roleCurrentState" value="RCS" type="radio" /> Roles Current State</label></li>
+                            </ul>
+                        </section>
+                    </section>
+                </section>
+                <section class="m-l-20">
+                    <iframe id="userAccessDownloadFrame" style="display:none"></iframe>
+                    <button href="#" class="btn btn-primary" id="userAccessDwnldBtn">Download To Excel</button>
+                </section>
+            </section>
+        </section>
+    </section>

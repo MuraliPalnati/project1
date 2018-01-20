@@ -1,0 +1,145 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Miscellaneous Cost Transfer Request (MCTR)</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/jquery-ui.css" />
+    <link rel="stylesheet" href="~/Content/ui.jqgrid.css" />
+    <link rel="stylesheet" href="~/Content/jqgrid.bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/style-master.css" />
+</head>
+<body class="container-fluid fixed-body">
+    <div class="navbar-fixed-top bg-white">
+        <header class="brand-header clearfix">
+            <div class="col-md-6 col-xs-12">
+                <div class="row">
+                    <a href="" title="Logo">
+                        <img src="~/Content/images/Boeing-Logo.jpg" alt="Boeing" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="row ">
+                    <h2>@TempData["Environment"]</h2>
+                </div>
+            </div>
+        </header>
+        <section class="well well-sm row clearfix stripe">
+            <div class="pull-left">
+                <span class="bold" id="dateValue"></span>
+            </div>
+        </section>
+    </div>
+    <section class="row content-section">
+        <!--        side menu navigation-->
+        <nav class="col-sm-3 col-md-2 col-xs-4 sidebar move-right">
+            <!--            menu toggler button-->
+            <button class="menu-collapse-button move-right" data-target="sidebar" data-offcanvas="menu" data-content="right-section" title="Toggle Menu">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+            <div class="nav-menu">
+                <ul class="side-nav" id="mainMenu-collapse">
+                    <li class="">
+                        <a href="#" class="title hyperlinks"> Home</a>
+                    </li>
+                    <li>
+                        <a role="button" data-toggle="collapse" data-parent="#mainMenu-collapse" href="#subone" aria-expanded="true" aria- controls="subone" class="title">Login <span class="arrow-down"></span></a>
+                        <ul id="subone" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                            <li><a href=@Url.Action("Login", "Account", new RouteValueDictionary(new { BEMS="230341"}))>Login</a></li>
+                            <li><a href=@Url.Action("GetUserGuide", "Home")>User Guide</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a role="button" data-toggle="collapse" data-parent="#mainMenu-collapse" href="#subtwo" aria-expanded="true" aria- controls="subone" class="title">Overview<span class="arrow-down"></span></a>
+                        <ul id="subtwo" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
+                            <li><a href=@Url.Action("GetOverView", "Home")>MCTR Overview</a></li>
+                            <li><a href=@Url.Action("GetEASRelatedFields", "Home")>EAS Related Fields</a></li>
+                            <li><a href=@Url.Action("GetWorkflow", "Home")>WorkFlow</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a role="button" data-toggle="collapse" data-parent="#mainMenu-collapse" href="#subThree" aria-expanded="true" aria- controls="subThree" class="title">Access<span class="arrow-down"></span></a>
+                        <ul id="subThree" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingThree">
+                            <li><a href=@Url.Action("GetAccess", "Home")>MCTR Gaining User Access</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a role="button" data-toggle="collapse" data-parent="#mainMenu-collapse" href="#subFour" aria-expanded="true" aria- controls="subFour" class="title">Resource<span class="arrow-down"></span></a>
+                        <ul id="subFour" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingFour">
+                            <li><a href=@Url.Action("GetResourceTroubleShooting", "Home")>Troubleshooting</a></li>
+                            <li><a href=@Url.Action("GetResourceDesktopIcons", "Home")>Desktop Icons</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a role="button" data-toggle="collapse" data-parent="#mainMenu-collapse" href="#subFive" aria-expanded="true" aria- controls="subFive" class="title">Batch Load<span class="arrow-down"></span></a>
+                        <ul id="subFive" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingFive">
+                            <li><a href=@Url.Action("GetBatchLoadTemplate", "Home")>Excel Template</a></li>
+                            <li><a href=@Url.Action("GetBatchLoadTemplateInstrtns", "Home")>Template Instructions</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:window.print()" class="title hyperlinks" id="printPage"> Print this page</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--        End of side menu navigation-->
+        <!--        Data list and form area-->
+        <section class="col-md-10 col-sm-9 col-xs-8 col-md-offset-2 col-sm-offset-3 col-xs-offset-4 right-section">
+            <div class="myAffix">
+                <h4>About MCTR Application</h4>
+                <hr>
+            </div>
+            <div class="clearfix">
+                <div class="col-md-12">
+                    <div class="row">
+                        <section><img src="~/Content/images/home_boeing.png" width="1032" height="427" alt="Boeing"></section>
+                        <p><b>MCTR</b> - Miscellaneous Cost Transfer Request</p>
+                        <p>This application was designed with the help and support from various members of the business community and took into concern their needs in designing a system that is easy to use and is comprehensive enough for all functional organizations under Business Management. MCTR has the capability to create, store, track, and status cost transfers and eliminates the need to access various business systems to provide back-up data to support the transfer of cost. </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--        end of Data list and form area-->
+    </section>
+    <!--    Default Footer-->
+    <footer class="footer clearfix row">
+        <div class="text-center">
+            <p>
+                <a href="#">Inside Boeing</a>
+                <span>|</span>
+                <a href="#">My Boeing</a> <span>|</span>
+                <a href="#">Brand Center</a> <span>|</span>
+                <a href="#">Website Feedbacks</a> <span>|</span>
+                <a href="#">Content Owner</a>
+            </p>
+            <p>Copyrights 2005-2015 Boeing. All rights reserved.</p>
+        </div>
+    </footer>
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui.min.js"></script>;
+    <script type="text/javascript" src="~/Scripts/grid.locale-en.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.jqGrid.src.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.combobox.js"></script>
+    <script type=text/javascript src="~/Scripts/left-menu.js"></script>
+    <script type=text/javascript src="~/Scripts/sticky-bar.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dateValue').text(new Date())
+        })
+        $('#printPage').click(function(){});
+    </script>
+</body>
+</html>

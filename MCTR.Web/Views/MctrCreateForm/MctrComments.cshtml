@@ -1,0 +1,40 @@
+﻿
+@model MCTR.DomainEntity.MCTRComments
+
+    <script src="~/scripts/MCTR/Comments.js"></script>
+
+    @*<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="fiscalYearClose" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">MCTR Comments Window</h4>
+    </div>*@
+    <div class="modal-body year-modal">
+
+        <section class="row form-horizontal">
+            <section class="col-md-12">
+                <section class="form-group">
+                    <label class="col-sm-3">Comments</label>
+                    <section class="col-sm-9">
+                        <textarea class="form-control col-sm-2" placeholder="There are no comments. To enter one, please use the &quot;Insert Comment&quot; button then the &quot;Save Comment&quot; button." rows="15" id="COMMENTS" readonly="readonly">@Model.COMMENTS</textarea>
+                        @*@Html.TextAreaFor(Model => Model.COMMENTS, new { @class = "form-control col-sm-2", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.COMMENTS, "")*@
+                    </section>
+                </section>
+                <section class="form-group" id="newCommentSection">
+                    <label class="col-sm-3">Comments - Enter Information</label>
+                    <section class="col-sm-9">
+                        <textarea type="text" class="form-control" id="newComment" />
+                        @Html.ValidationMessageFor(model => model.COMMENTS, "")
+                    </section>
+                </section>
+            </section>
+            <section class="col-md-12 m-t-5">
+                <section class="align-right ">
+                    <button href='#' class="btn btn-group btn-XS" id="insertCommentBtn">Insert Comment</button>
+                    <button href="#" class="btn btn-group btn-XS" id="saveCommentBtn">Save Comment</button>
+                    <button href="#" data-dismiss="modal" class="btn btn-group btn-XS" id="closeBtn">Close</button>
+                </section>
+            </section>
+
+        </section>
+
+    </div>

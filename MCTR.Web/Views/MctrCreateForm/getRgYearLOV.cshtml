@@ -1,0 +1,30 @@
+﻿
+
+<script src="~/scripts/MCTR/OHBaseYear.js"></script>
+
+@*<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"  id="fiscalYearClose" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Registered MCTR Users</h4>
+</div>*@
+
+    <section class="row form-group">
+        <label class="col-md-2 control-label">Find</label>
+        <section class="row no-gutter">
+            <section class="col-md-8 mr-3">
+                <input class="form-control" id="searchValue"/>
+            </section>
+            <button class="btn btn-group btn-xs" id="findBtn"><span class="glyphicon glyphicon-search font-15"></span></button>
+        </section>
+    </section>
+    <section class="row">
+        <section class="col-md-12 col-md-offset-2">
+            <table id="mctrfiscalYearsGrid"></table>
+            <section id="yearPager"></section>
+        </section>
+
+            <section class="col-md-12 m-t-5 align-right">
+                <button href="#" class="btn btn-group btn-XS" id="fiscalYrokBtn">OK</button>
+                <button href="#" data-dismiss="modal" class="btn btn-group btn-XS"  id="fiscalYearCancelBtn">Cancel</button>
+            </section>
+    </section>
+

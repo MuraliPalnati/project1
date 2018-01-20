@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07F00C29-812D-4458-B3FA-0D4ECBC2CD82}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MCTR.Business</RootNamespace>
+    <AssemblyName>MCTR.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.2400\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.12.1.2400\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountBusiness.cs" />
+    <Compile Include="BaseBusiness.cs" />
+    <Compile Include="BuProfileBusiness.cs" />
+    <Compile Include="CreateMctrLovBusiness.cs" />
+    <Compile Include="CustTypeBusiness.cs" />
+    <Compile Include="JrnlHistBusiness.cs" />
+    <Compile Include="JrnlWeekBusiness.cs" />
+    <Compile Include="LbrRateBusiness.cs" />
+    <Compile Include="LbrRateCyLogic.cs" />
+    <Compile Include="LineItemBusiness.cs" />
+    <Compile Include="MctrAttachBlBusiness.cs" />
+    <Compile Include="MctrCompRatesBusiness.cs" />
+    <Compile Include="MctrCreateFormBusiness.cs" />
+    <Compile Include="MctrIncrRatesBusiness.cs" />
+    <Compile Include="MCTRJobStatusBusiness.cs" />
+    <Compile Include="MctrJrnlByDateRptBlBusiness.cs" />
+    <Compile Include="MctrLogAcctBusiness.cs" />
+    <Compile Include="MctrLogOrigBusiness.cs" />
+    <Compile Include="MctrMainMenuBusiness.cs" />
+    <Compile Include="MctrMessageStatusBusiness.cs" />
+    <Compile Include="MctrOffsetFormBlBusiness.cs" />
+    <Compile Include="MctrOhFormBlBusiness.cs" />
+    <Compile Include="MctrOpenReportsBlBusiness.cs" />
+    <Compile Include="MctrRptsAdmnBlBusiness.cs" />
+    <Compile Include="MctrWkipJrnlsBlBusiness.cs" />
+    <Compile Include="PerCheckBlBusiness.cs" />
+    <Compile Include="PerStatusBlBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleBuBusiness.cs" />
+    <Compile Include="RoleBusiness.cs" />
+    <Compile Include="RoleListBusiness.cs" />
+    <Compile Include="RoleListNewuserBusiness.cs" />
+    <Compile Include="StatHistBlBusiness.cs" />
+    <Compile Include="StatusBusiness.cs" />
+    <Compile Include="TransTypeBusiness.cs" />
+    <Compile Include="TtdCheckBlBusiness.cs" />
+    <Compile Include="ReportsBusiness.cs" />
+    <Compile Include="TtdStatusBlBusiness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MCTR.BusinessInterface\MCTR.BusinessInterface.csproj">
+      <Project>{0e2246f2-3ff2-4652-a01a-78ab65347270}</Project>
+      <Name>MCTR.BusinessInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.DataAccessInterface\MCTR.DataAccessInterface.csproj">
+      <Project>{8c691301-d094-42de-9ab2-ff3849aa81cd}</Project>
+      <Name>MCTR.DataAccessInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.DataAccess\MCTR.DataAccess.csproj">
+      <Project>{a2ad499d-028b-433e-bc40-dce1d4e763a6}</Project>
+      <Name>MCTR.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.DataEntity\MCTR.DataEntity.csproj">
+      <Project>{efe689ea-67d0-49f4-83a8-deaad938e11f}</Project>
+      <Name>MCTR.DataEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.DomainEntity\MCTR.DomainEntity.csproj">
+      <Project>{ca3a66bd-32f6-4b2b-860f-7428d5e010be}</Project>
+      <Name>MCTR.DomainEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

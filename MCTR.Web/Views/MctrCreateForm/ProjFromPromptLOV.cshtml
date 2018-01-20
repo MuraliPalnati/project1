@@ -1,0 +1,27 @@
+﻿
+
+<script src="~/scripts/MCTR/ProjectPromptFrom.js"></script>
+
+
+<section class="form-group row no-gutter">
+    <label class="col-md-1 control-label">Find</label>
+    <section class="col-md-8 mr-3">
+        <input class="form-control" id="searchValue" />
+    </section>
+    <button class="btn btn-group btn-xs" id="findBtn"><span class="glyphicon glyphicon-search font-15"></span></button>
+    <input type="hidden" id="activeProgFrom" value=@Model />
+</section>
+<input type="hidden" id="rowId" value="@ViewData["rowId"]" />
+<section class="row">
+    <section class="col-md-12">
+        <table id="mctrActiveProjectsPromptGrid"></table>
+        <div id="pager"></div>
+    </section>
+    <section class="col-md-12 m-t-5">
+        <section class="align-right ">
+            <button href="#" class="btn btn-group btn-XS" id="activeProjPrompFromkBtn">OK</button>
+            <button href="#" data-dismiss="modal" class="btn btn-group btn-XS" id="cancelBtn">Cancel</button>
+        </section>
+    </section>
+</section>
+

@@ -1,0 +1,465 @@
+﻿@model MCTR.DomainEntity.MctrCreateForm
+<script src="~/scripts/MCTR/ValidaitonsCreateForm.js"></script>
+<script src="~/scripts/MCTR/MctrCreateFormHeading.js"></script>
+<script src="~/scripts/MCTR/CreateViewMCTR.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#createReportBtn').click(function () {
+            var url =getBaseUrl('/Reports/PrintMCTR.aspx')+'?mctrNo=' + $('#MctrNo').val() + '+ &attachments=' + document.getElementById('attachmntList').checked + ' &commnets=' + document.getElementById('commentsChk').checked + ' &satusHist=' + document.getElementById('statusHistChk').checked + ' &YTD=' + document.getElementById('YTDBkp').checked + ' &TTD=' + document.getElementById('TTDBkp').checked + ' &OvrHd=' + document.getElementById('ovrheadChk').checked + ' &OffSetCk=' + document.getElementById('offsetChk').checked + ' &matrlListing=' + document.getElementById('matrlListingChk').checked + ' &justChk=' + document.getElementById('justChk').checked + ' &prevChk=' + document.getElementById('prevChk').checked + '';
+            $('#iFrame').attr('src', url)
+        });
+    });
+</script>
+
+<div class="myAffix">
+@if (TempData["lineItemNav"]!= null)
+{
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt;<a href=@Url.Action("lineItemOnLoad", "LineItem")> Line Item Search</a> &gt; Open MCTR</section>
+}
+else
+{
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a>&gt; Create/View MCTR</section>
+}
+    <h4>MCTR Generation Form <span id="qmode" class="query-mode"><strong>[Query Mode Only!]</strong></span></h4>
+    <hr>
+</div>
+<!-- End of header Affix -->
+<!-- top forms -->
+<form id="form" action=@Url.Action("mctrHeaderPreInsert","MctrCreateForm") method ="POST">
+    <div id='ALERT_BU_CHG' class='modal fade in'>
+        <div class="modal-dialog">
+            <div class="modal-content confirmation">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="ALERT_BU_CHGclose" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Do you want to continue with this action?</h4>
+                </div>
+                <div class="modal-body in-form">
+                    <p class="text-warning">Line Items changed when new Business Unit value is selected requires manual validation of each line item entry in order to save this change. Select OK to proceed with this action or select STOP.</p>
+                    <a href='#' class="btn btn-group btn-XS" id="ALERT_BU_CHGstopBtn">Stop</a>
+                    <a href="#" class="btn btn-group btn-XS" id="ALERT_BU_CHGcontinueBtn">Continue</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="searchModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                @*<div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>*@
+                <div class="modal-body in-form">
+                    <section class="row form-group">
+                        <div class="col-md-12" id="alertSearch">
+                        </div>
+                        <label class="col-md-3 control-label">MCTR</label>
+                        <section class="row no-gutter">
+                            <section class="col-md-6 mr-3">
+
+                                <input class="form-control" id="searchMctr"/>
+                            </section>
+                            <a class="btn btn-group btn-xs btn-danger" href="" id="searchMctrBtn"><span class="glyphicon glyphicon-search font-15"></span></a>
+                        </section>
+                    </section>
+                    <section class="row m-t-5">
+                        <section class="col-md-12">
+                            <section class="align-center ">
+                                <button href="#" data-dismiss="modal" class="btn btn-default btn-XS" id="cancelBtn">Cancel</button>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  id='mctrModalJustification' class='modal fade in'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id='myModalContentSmall'></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="prinMctrModal" tabindex="-1" role="dialog" aria-labelledby="prinMctrModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" id="pclose" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Print MCTR</h4>
+                </div>
+                <div class="modal-body in-form">
+                    <div id="printMctrMsgDialog"></div>
+                    <section class="row form-horizontal">
+                        <section class="col-md-12">
+                            <section class="form-group">
+                                <label class="col-sm-1">MCTR:</label>
+                                @*@Html.LabelFor(model => model.MctrNo, new { @class = "col-sm-3" })*@
+                                <section class="col-sm-4">
+                                    @Html.TextBoxFor(model => model.MctrNo, new { @class = "form-control", @readonly = "readonly", @id = "printMctrNo" })
+                                    @Html.ValidationMessageFor(model => model.MctrNo, "")
+                                </section>
+                                <section class="col-md-offset-8">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#iFrameModal" data-backdrop="static"  id="createReportBtn">Create Report</button>
+                                </section>
+                            </section>
+                            <section class="form-group">
+                                @*@Html.LabelFor(model => model.title, new { @class = "col-sm-1" })*@
+                                <section class="col-sm-10">
+                                    <input class = "form-control" id = "printMctrTitle" value="@Model.title" readonly/>
+                                </section>
+                            </section>
+                                </section>
+                            </section>
+                    <section class="row">
+                        <label class="col-md-12 control-label">Include the following:</label>
+                        <section id="firstcol" class="col-md-6">
+                            <div class="checkbox">
+                                <label class="col-md-10"><input id="attachmntList" type="checkbox" /> Attachment Listing</label>
+                                <label class="col-md-10"><input id="commentsChk" type="checkbox" /> Comments</label>
+                                <label class="col-md-10"><input id="statusHistChk" type="checkbox" /> Status History</label>
+                                <label class="col-md-10"><input id="YTDBkp" type="checkbox" />YTD Backup</label>
+                                <label class="col-md-10"><input id="TTDBkp" type="checkbox" />TTD Backup</label>
+                            </div>
+                        </section>
+                        <section id="secondcol"class="col-md-6">
+                            <div class="checkbox">
+                             
+                                <label class="col-md-10"><input id="ovrheadChk" type="checkbox" /> Overhead (Accounting roles only)</label>
+                                <label class="col-md-10"><input id="offsetChk" type="checkbox" /> Offsets (Accounting roles only)</label>
+                                <label class="col-md-10"><input id="matrlListingChk" type="checkbox" />Material Listing</label>
+                                <label class="col-md-10"><input id="justChk" type="checkbox" />Justification</label>
+                                <label class="col-md-10"><input id="prevChk" type="checkbox" />Preventative Measure</label>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        <div id='iFrameModal' class='modal fade in'>
+            <div class="modal-dialog">
+                <div class="modal-content modal-xtralg">
+                    <div class="modal-header">
+                        <button id="printclose" type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body in-form">
+                        <section class="row">
+                            <iframe class="col-md-12" src="" id="iFrame" width="120" height="450"></iframe>
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="m-t-45 row">
+        <section class="col-md-12" id="dialog-box"></section>
+        <section class="col-md-6">
+
+            <div>
+                <iframe id="DownloadFrame" style="display:none"></iframe>
+                <a href="#" tabindex="0" class="btn btn-primary" title="Download to Excel" id="dwnloadBtn"><span class="glyphicon glyphicon-file mr-3"></span>Download to Excel</a>
+                <a data-toggle="modal" tabindex="0" data-target="#prinMctrModal" data-backdrop="static" class="btn btn-primary btn-sm" title="Print MCTR"><span class="glyphicon glyphicon-print"></span>&nbsp;Print MCTR</a>
+                <button id="savebut" type="submit" class="btn btn-primary btn-sm" title="Click On This Button To Save the MCTR Create Form" data-toggle="modal"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Save</button>
+                <button type="button" tabindex="0" id="querybut" data-toggle="modal" data-target="#searchModal" data-backdrop="static" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span>&nbsp;Query Mode</button>
+                <a id="searchbutt" tabindex="0" class="btn btn-primary btn-sm" ><span class="glyphicon glyphicon-search"></span>&nbsp;Search</a>
+                <a id="submitBtn" tabindex="0" class="btn btn-primary btn-sm" title="Click On This Button To Reset all 'N' approvals and send MCTR to next approval area" data-toggle="modal"><span class="glyphicon glyphicon-folder-close"></span>&nbsp;Submit MCTR</a>
+            </div>
+            <div class="row m-t-5">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <section class="form-group">
+                    @Html.LabelFor(model => model.MctrNo, new { @class = "col-sm-2 m-t-10", @tabindex = "-1", })
+                    @using MCTR.Web.Security;
+                    <section class="col-sm-2 m-t-10">
+                        @Html.HiddenFor(x => x.SessionBems)
+                        @Html.HiddenFor(x => x.processType)
+                        @Html.HiddenFor(x => x.preventativeMeasures, new { @id ="prevMeasures" })
+                        @Html.Hidden("AccountantRole",@SessionPerister.ACCOUNTANTROLE)
+                        @Html.HiddenFor(x => x.py_cy_status)
+                        @Html.HiddenFor(x => x.PeriodFrom)
+                        @Html.HiddenFor(x => x.PeriodTo)
+                        @Html.HiddenFor(x => x.COW)
+                        @Html.HiddenFor(x => x.queryFlag)
+                        @Html.HiddenFor(x => x.RejectCode)
+                        @Html.HiddenFor(x => x.AttachmentCount)
+                        @Html.HiddenFor(x => x.CommentsCount)
+                        @Html.HiddenFor(x => x.OffsetLines)
+                        @Html.TextBoxFor(model => model.MctrNo, new { @class = "form-control col-sm-2", @readonly = "readonly", @tabindex = "-1", })
+                        @Html.ValidationMessageFor(model => model.MctrNo, "")
+                    </section>
+                </section>
+                <section class="form-group">
+                    @Html.LabelFor(model => model.DateEnter, new { @class = "col-md-1", @tabindex = "-1", })
+                    <section class="col-sm-3">
+                        @Html.TextBoxFor(model => model.DateEnter, new { @class = "form-control col-sm-3", @tabindex = "-1", @readonly = "readonly" , @Value = Model.DateEnter.ToString("dd-MMM-yyyy") == "01-Jan-0001" ? "" : Model.DateEnter.ToString("dd-MMM-yyyy") })
+                        @Html.ValidationMessageFor(model => model.DateEnter, "", new { @class = "text-danger" })
+                    </section>
+                </section>
+
+                <section class="form-group">
+
+                    @Html.LabelFor(model => model.DateJournal, new { @class = "col-md-1", @tabindex = "-1", })
+                    <section class="col-sm-3">
+                        @Html.TextBoxFor(model => model.DateJournal, new { @class = "form-control col-sm-3", @tabindex = "-1", @readonly = "readonly", @Value = Model.DateJournal.ToString("dd-MMM-yyyy") == "01-Jan-0001" ? "" : Model.DateJournal.ToString("dd-MMM-yyyy") })
+                        @Html.ValidationMessageFor(model => model.DateJournal, "", new { @class = "text-danger" })
+                    </section>
+
+                </section>
+            </div>
+            <div class="row m-t-5">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-sm-2", @tabindex = "-1", })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.title, new { @class = "form-control col-sm-10 uppercase", @tabindex = "1", @autofocus=true })
+                        @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row m-t-5">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BemsOrig, new { @class = "control-label col-sm-2", @tabindex = "-1", })
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.BemsOrig, new { @class = "form-control col-sm-3", @tabindex = "-1", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.BemsOrig, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-sm-7">
+                        @Html.TextBoxFor(model => model.OrigFullName, new { @class = "form-control col-sm-7", @readonly = "readonly", @tabindex = "-1", })
+                        @Html.ValidationMessageFor(model => model.OrigFullName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row m-t-5">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StatusId, htmlAttributes: new { @class = "control-label col-sm-3" })
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.StatusId, new { @class = "form-control col-sm-2", @readonly = "readonly", tabindex = "0" })
+                        @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(model => model.StatusDescription, new { @class = "form-control col-sm-5", @readonly = "readonly", tabindex = "0" })
+                        @Html.ValidationMessageFor(model => model.StatusDescription, "", new { @class = "text-danger" })
+                    </div>
+                    <a data-toggle="modal" tabindex="-1" href=@Url.Action("mctrStatusHistOnLoadCreateForm", "StatHistBl", new { mctrNo = Model.MctrNo }) data-target="#mctrModal" data-backdrop="static" data-placement="bottom" class="btn btn-primary btn-sm" title="Click On This Button To View Status History"><span class="glyphicon glyphicon-time"></span>&nbsp;History</a>
+                </div>
+            </div>
+            <div class="row m-t-5">
+                <section class="m-l-15">
+                    <div class="form-group btn-line">
+                            <a id="jpbut" data-placement="bottom" data-toggle="modal" tabindex="9" data-target="#mctrModalJustification"   data-backdrop="static" class="btn btn-primary btn-sm" title="Click On This Button To Enter / View MCTR Justification / Preventative Measure"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Just/Prev Measure</a>
+                            <a id="attachBtn" data-toggle="modal" tabindex="10" href=@Url.Action("mctrAttachMctrAttachOnLoad", "MctrAttachBl", new { mctrNo = Model.MctrNo }) data-target="#mctrModalLarge" data-backdrop="static" class="btn btn-primary btn-sm" title="Click On This Button To Add/View Attachments For This MCTR"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;Attachments</a>
+                            <a id="commentsBtn" tabindex="11" class="btn btn-primary btn-sm" title="Click On This Button To Add/View Comments For This MCTR"><span class="glyphicon glyphicon-comment"></span>&nbsp;Comments</a>
+                            <a data-toggle="modal" tabindex="12" id="Unjournal" data-target="#grid_modal" data-backdrop="static" class="btn btn-primary btn-sm" title="Unjournal">Unjournal</a>
+                            <a data-toggle="modal" tabindex="13" id="Journal" data-target="#grid_modal" data-backdrop="static" class="btn btn-primary btn-sm" title="Unjournal">Journal</a>
+                            <a tabindex="14" id="JournlInPro" class="btn btn-default btn-xs btn-default-font" data-toggle="modal" data-target="#mctrModalLarge" data-backdrop="static" href=@Url.Action("JournalsInProcessPopUp","MctrWkipJrnlsBl")>></a>
+                            <button type="button" id="batchBut" hr tabindex="15" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-import"></span>&nbsp;Batch Load</button>
+                            <input type="file" id="batchInput" name="batchInput" />
+                            <button type="button" id="cancelBut" hr tabindex="16" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-remove"></span>&nbsp;Cancel</button>
+                            <button type="button" id="recallButton" tabindex="17" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-repeat mr-3"></span>Recall</button>
+                            <button type="button" id="reopenBut" hr tabindex="18" class="btn btn-primary btn-sm">Reopen</button>
+                            <button type="button" id="resetBut" hr tabindex="19" class="btn btn-primary btn-sm">Reset Approvals</button>
+                </div>
+                </section>
+            </div>
+            <section class="row mt-10">
+                <section class="col-md-12">
+                    <div class="row nestedlist">
+                        <ul>
+                            <li>
+                                <label>BU GRP</label> <span>
+                                    <button type="button" id="bubut" tabindex="2" class="btn btn-default btn-xs btn-default-font">></button>
+                                    @Html.TextBoxFor(model => model.OrigBu, new { @class = "form-control input-small", @readonly = "readonly" })
+                                    @Html.TextBoxFor(model => model.OrigGroup, new { @class = "form-control input-medium", @readonly = "readonly" })
+                                </span>
+                            </li>
+                            <li>
+                                <label>OH Base Year</label> <span>
+                                    <button type="button" id="fiscalYearBtn" tabindex="3" class="btn btn-default btn-xs btn-default-font">></button>
+                                    @Html.TextBoxFor(model => model.fyear, new { @class = "form-control input-medium", @readonly = "readonly" })
+                                    <br><label id="prevOrCY" class="text-danger PYCY align-center"></label>
+                                </span>
+                            </li>
+                            <li>
+                                <label>RS CD</label>
+                                <span>
+                                    <button type="button" data-toggle="modal" tabindex="4" href=@Url.Action("getRgReasonLOV","MctrCreateForm") data-target="#mctrModal" data-backdrop="static" id="reasonCodeBtn" class="btn btn-default btn-xs btn-default-font">></button>
+
+                                    @Html.TextBoxFor(model => model.ReasonCode, new { @class = "form-control input-medium", @readonly = "readonly" })
+                                </span>
+                            </li>
+
+                            <li>
+                                <label>Appl Jrnl Id</label> <span>
+                                    <button type="button" id="appljrnlbutn" tabindex="5" class="btn btn-default btn-xs btn-default-font">></button>
+                                    @Html.TextBoxFor(model => model.ApplJrnlId, new { @class = "form-control input-medium", @readonly = "readonly" })
+                                </span>
+                            </li>
+
+                            <li>
+                                <label tabindex="-1">JV Item Cd</label> <span>
+                                    @Html.TextBoxFor(model => model.JvItemCd, new { @class = "form-control input-medium", @tabindex = "6" })
+                                </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </section>
+
+            </section>
+        </section>
+        <section id="approverSection" class="col-md-6">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="20%"></td>
+                    <td width="5%"></td>
+                    <td width="20%">BEMS ID</td>
+                    <td rowspan="9">&nbsp;</td>
+                    <td width="30%">Full Name</td>
+                    <td rowspan="9">&nbsp;</td>
+                    <td width="5%">Appr?</td>
+                    <td></td>
+                    <td width="20%">Date</td>
+                </tr>
+                <tr id="supersec">
+                    <td>Supervisor:</td>
+                    <td><button type="button" tabindex="7" id="supbut" @*href=@Url.Action("getRgSuperLOV","MctrCreateForm")*@ data-toggle="modal" data-target="#mctrModal" data-backdrop="static" class="btn btn-default btn-xs btn-default-font">></button></td> 
+                    <td> @Html.TextBoxFor(model => model.BemsSuper, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td> @Html.TextBoxFor(model => model.SuprApprFullName, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td width="5%"><button type="button" id="SupAppr" disabled="disabled" class="btn btn-default btn-xs btn-default-font popoverAppr" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right">></button></td>
+                    <td width="6%">@Html.TextBoxFor(model => model.ApprCdSuper, new { @class = "form-control input-small approver", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(model => model.DateApprSuper,"{0:dd MMM yyyy}", new { @class = "form-control", @readonly = "readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Fin.Control:</td>
+                    <td><button type="button" id="Finbut" tabindex="8" data-toggle="modal" @*href=@Url.Action("getRgFinCtlLOV","MctrCreateForm")*@ data-target="#mctrModal" data-backdrop="static" class="btn btn-default btn-xs btn-default-font">></button></td>
+                    <td>@Html.TextBoxFor(model => model.BemsFinCtl, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td> @Html.TextBoxFor(model => model.FinApprFullName, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td><button type="button" id="FinAppr" disabled="disabled" class="btn btn-default btn-xs btn-default-font popoverAppr" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right">></button></td>
+                    <td>@Html.TextBoxFor(model => model.ApprCdFinCtl, new { @class = "form-control input-small approver", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(model => model.DateApprFinCtl, new { @class = "form-control", @readonly = "readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Accountant:</td>
+                    <td><button type="button" id="AccBut" data-toggle="modal" disabled="disabled" @*href=@Url.Action("getRgAcctLOV","MctrCreateForm")*@ data-target="#mctrModal" data-backdrop="static" class="btn btn-default btn-xs btn-default-font">></button></td>
+                    <td>@Html.TextBoxFor(model => model.BemsAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(model => model.AccApprFullName, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td><button type="button" id="AccAppr" disabled="disabled" class="btn btn-default btn-xs btn-default-font popoverAppr" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right">></button></td>
+                    <td>@Html.TextBoxFor(model => model.ApprCdAcct, new { @class = "form-control input-small approver", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(model => model.DateApprAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Labor Acctg:</td>
+                    <td><button type="button" id="LbrAccBut" data-toggle="modal" disabled="disabled" @*href=@Url.Action("getRgLbrAcctLOV","MctrCreateForm")*@ data-target="#mctrModal" data-backdrop="static" class="btn btn-default btn-xs btn-default-font">></button></td>
+                    <td>@Html.TextBoxFor(model => model.BemsLbrAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td> @Html.TextBoxFor(model => model.LbrApprFullName, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td><button type="button" id="LbrAccAppr" disabled="disabled" class="btn btn-default btn-xs btn-default-font popoverAppr" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right">></button></td>
+                    <td>@Html.TextBoxFor(model => model.ApprCdLbrAcct, new { @class = "form-control input-small approver", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(model => model.DateApprLbrAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Mat'l Acctng:</td>
+                    <td><button type="button" id="MatAccBut" data-toggle="modal" disabled="disabled" @*href=@Url.Action("getRgMatlAcctLOV","MctrCreateForm")*@ data-target="#mctrModal" data-backdrop="static" class="btn btn-default btn-xs btn-default-font">></button></td>
+                    <td>@Html.TextBoxFor(model => model.BemsMatlAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td> @Html.TextBoxFor(model => model.MatApprFullName, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td><button type="button" id="MtlAccAppr" disabled="disabled" class="btn btn-default btn-xs btn-default-font popoverAppr" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right">></button></td>
+                    <td>@Html.TextBoxFor(model => model.ApprCdMatlAcct, new { @class = "form-control input-small approver", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(model => model.DateApprMatlAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Cost Acctng:</td>
+                    <td><button type="button" id="CostAccBut" data-toggle="modal" disabled="disabled" @*href=@Url.Action("getRgCostAcctLOV","MctrCreateForm")*@ data-target="#mctrModal" data-backdrop="static" class="btn btn-default btn-xs btn-default-font">></button></td>
+                    <td>@Html.TextBoxFor(model => model.BemsCostAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td> @Html.TextBoxFor(model => model.CostAccApprFullName, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td><button type="button" id="CostAccAppr" disabled="disabled" class="btn btn-default btn-xs btn-default-font popoverAppr" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right">></button></td>
+                    <td>@Html.TextBoxFor(model => model.ApprCdCostAcct, new { @class = "form-control input-small approver", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(model => model.DateApprCostAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Journal Approver:</td>
+                    <td><button type="button" id="JrnlAppBut" disabled="disabled" data-toggle="modal" @*href=@Url.Action("getRgSrAcctLOV","MctrCreateForm")*@ data-target="#mctrModal" data-backdrop="static" class="btn btn-default btn-xs btn-default-font">></button></td>
+                    <td>@Html.TextBoxFor(model => model.BemsSrAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(model => model.JournApprFullName, new { @class = "form-control", @readonly = "readonly" })</td>
+                    <td><button type="button" id="JrnlAppr" disabled="disabled" class="btn btn-default btn-xs btn-default-font popoverAppr" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right">></button></td>
+                    <td>@Html.TextBoxFor(model => model.ApprCdSrAcct, new { @class = "form-control input-small approver", @readonly = "readonly" })</td>
+                    <td>@Html.TextBoxFor(model => model.DateApprSrAcct, new { @class = "form-control", @readonly = "readonly" })</td>
+                </tr>
+            </table>
+        </section>
+        <section class="col-md-6 mt-10">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="align-right-input">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Lines</td>
+                    <td align="center">Hours</td>
+                    <td>Amount</td>
+                    <td>&nbsp;</td>
+                    <td>Lines</td>
+                    <td>Overhead</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="width:5%">Fr:</td>
+                    <td style="width:5%">@Html.TextBoxFor(model => model.Linesfrom, new { @class = "form-control input-small" })</td>
+                    <td style="width:15%">@Html.TextBoxFor(model => model.TotalQtyFrom, "{0:0.0}", new { @class = "form-control input-large" })</td>
+                    <td width="20%">@Html.TextBoxFor(model => model.TotalAmtFrom, "{0:0.00}", new { @class = "form-control input-large"})</td>
+                    <td width="5%"></td>
+                    <td width="5%">@Html.TextBoxFor(model => model.LinesOhFrom, new { @class = "form-control input-large" })</td>
+                    <td width="20%">@Html.TextBoxFor(model => model.totalOhFrom, "{0:0.00}", new { @class = "form-control input-large" })</td>
+                    <td width="5%"></td>
+                    <td width="20%"><a id="stretchBtn" class="btn btn-primary btn-sm" title="Stretch">Stretch</a></td>
+                </tr>
+                <tr>
+                    <td width="5%">To:</td>
+                    <td width="5%">@Html.TextBoxFor(model => model.LinesTo, new { @class = "form-control input-small" })</td>
+                    <td width="15%">@Html.TextBoxFor(model => model.TotalQtyTo, "{0:0.0}", new { @class = "form-control input-large"})</td>
+                    <td style="width:20%">@Html.TextBoxFor(model => model.TotalAmtTo, "{0:0.00}", new { @class = "form-control input-large" })</td>
+                    <td width="5%"><button id="overbut" type="button" class="btn btn-default btn-xs btn-default-font" data-toggle="modal" data-target="#mctrModalXtraLarge" data-backdrop="static" href=@Url.Action("MctrOverheadForm", "MctrOhFormBl")>></button></td>
+                    <td style="width:5%">@Html.TextBoxFor(model => model.LinesOhTo, new { @class = "form-control input-large" })</td>
+                    <td width="20%">@Html.TextBoxFor(model => model.totalOhTo, "{0:0.00}", new { @class = "form-control input-large" })</td>
+                    <td width="5%"></td>
+                    <td width="20%" class="align-right"><span class="offset">Offset</span></td>
+                </tr>
+                <tr>
+                    <td width="5%"></td>
+                    <td width="5%"></td>
+                    <td width="15%">Subtotal</td>
+                    <td width="20%">@Html.TextBoxFor(model => model.CalAmount, "{0:0.00}", new { @class = "form-control input-large" })</td>
+                    <td width="5%"></td>
+                    <td width="10%"></td>
+                    <td width="20%">@Html.TextBoxFor(model => model.totalOh,"{0:0.00}", new { @class = "form-control input-large" })</td>
+                    <td width="5%"><button id="offbut"type="button" class="btn btn-default btn-xs btn-default-font" data-toggle="modal" data-target="#mctrModalXtraLarge" data-backdrop="static" href=@Url.Action("MctrOffsetForm","MctrOffsetFormBl")>></button></td>
+                    <td width="20%">@Html.TextBoxFor(model => model.totalOffset ,"{0:0.00}",new { @class = "form-control input-large"@*, @Value = Model.totalOffset == null ? "0.00" : Model.totalOffset.ToString()*@ } )</td>
+                </tr>
+            </table>
+
+
+        </section>
+    </section>  
+    <section class="row">
+        <section class="col-md-3">
+            <a href="#"  id="addLineIemNewRow" class="btn btn-default add-row-jqGrid mr-3" ><span class="glyphicon glyphicon-plus"></span></a>
+        </section>
+
+    </section>
+    <section class="row mt-10 no-gutter jQGridRow">
+        <section class="col-md-2" id="tblJQGridFirstSection">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tblJQGridFirst" class="table table-condensed"></table>
+        </section>
+        <section class="col-md-5 overlay-cover overflow" id="tblJQGridCoverSection">
+            <section class="overlay-cover-content content ">
+                <section>
+                    <input type="hidden" id="formOrToFlag" value="" />
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tblJQGridCover" class="table table-condensed"></table>
+                </section>
+            </section>
+        </section>
+        <section class="overlay-inner col-md-5" id="tblJQGridInnerSection">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tblJQGridInner" class="table table-condensed"></table>
+        </section>
+
+    </section>
+</form>

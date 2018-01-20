@@ -1,0 +1,72 @@
+﻿@model MCTR.DomainEntities.MctrMessageStatus
+
+
+<script src="~/scripts/MCTR/MessageStatus.js"></script>
+<script src="~/scripts/jquery.validate.js"></script>
+
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables  &gt; MCTR Message Status</section>
+    <h4>MCTR Message Status</h4>
+</section>
+
+<!-- End of header Affix -->
+<section class="col-md-12 col-sm-12 col-xs-12 m-t-50 container-box">
+    <section id="dialog-box"></section>
+    <section class="row form-horizontal">
+
+        <section class="row">
+
+            <section class="col-md-12 ">
+                <section class="row">
+                    <section class="col-md-6">
+                        <ul>
+                            <li> <u><strong>Note: The message status entry was selected and is ready for you to change and save. Use the Menu Query to retrieve again</strong></u></li>
+                        </ul>
+                    </section>
+                </section>
+
+
+                <section class="form-group">
+                    <label class="control-label col-md-2">Message Status Code</label>
+                    <section class="col-sm-2">
+                        @Html.TextBoxFor(model => model.MESSAGE_STATUS, new { @class = "form-control" , @maxLength = "1" })
+                        @Html.ValidationMessageFor(model => model.MESSAGE_STATUS)
+                    </section>
+                </section>
+                <section class="form-group">
+                    <label class="control-label col-md-2">Message Status Text</label>
+                    <section class="col-md-6">
+                        @Html.TextBoxFor(model => model.MESSAGE_TEXT, new { @class = "form-control" , @maxLength = "100" })
+                        @Html.ValidationMessageFor(model => model.MESSAGE_STATUS)
+
+                    </section>
+                </section>
+            </section>
+            <section class="col-md-12">
+                <hr>
+                <section class="col-md-offset-0">
+                    <u><strong>Note: Display code and what the code means.</strong> </u>
+                </section>
+
+                <section class="col-md-offset-0">
+                    <ul>
+                        <li><strong>0 - Normal Program Operation - No text message displayed.</strong></li>
+                        <li><strong>1 - Normal Program Operation - Text message displayed.</strong></li>
+                        <li><strong> 2 - Terminates Program at startup after displaying text message.</strong></li>
+                        <li class="m-t-5">&nbsp; &nbsp; &nbsp; Program does not terminate for those users located in table named MCTR_STATUS_ADMIN so someone can get back into program to reset code 2 back to code 1 or zero.</li>
+                    </ul>
+                </section>
+            </section>
+        </section>
+
+    </section>
+
+    <section class="row button_bottom align-right ">
+        <hr />
+        <button class="btn btn-primary btn-sm" id="save"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Save </button>
+    </section>
+</section>
+
+
+
+

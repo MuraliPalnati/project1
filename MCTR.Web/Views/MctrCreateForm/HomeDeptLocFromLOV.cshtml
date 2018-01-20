@@ -1,0 +1,31 @@
+﻿
+<script src="~/scripts/MCTR/HomeDeptLocFrom.js"></script>
+<div id="warning-msg"></div>
+<section class="form-group">
+    <label class="col-md-1 control-label">Find</label>
+    <section class="row no-gutter">
+        <section class="col-md-10 mr-3">
+            <input value="@ViewData["deptID"]" class="form-control" type="text" id="searchValue" />
+        </section>
+        <button class="btn btn-group btn-xs" id="findBtn"><span class="glyphicon glyphicon-search font-15"></span></button>
+    </section>
+    @*<label class="col-md-1 control-label">Find</label>
+        <section class="col-md-11">
+            <input value="@ViewData["deptID"]" class="form-control" type="text" id="deptID"   />
+        </section>*@
+    <input type="hidden" id="rowId" value="@ViewData["rowID"]" />
+</section>
+<section class="row">
+    <section class="col-md-12">
+        <table id="mctrHomeDeptFromGrid"></table>
+        <div id="pager"></div>
+    </section>
+    <section class="col-md-12 m-t-5">
+        <section class="align-right ">
+            <button href="#" class="btn btn-group btn-XS" id="mctrHomeDeptlocOkBtn">OK</button>
+            <button href="#" data-dismiss="modal" class="btn btn-group btn-XS" id="mctrHomeDeptloccancelBtn">Cancel</button>
+        </section>
+    </section>
+</section>
+
+

@@ -1,0 +1,30 @@
+﻿@model MCTR.DomainEntity.MctrAttachBl
+
+<script src="~/scripts/MCTR/Attachments.js"></script>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">MCTR Attachments Window</h4>
+</div>
+<div class="modal-body attachment-modal-body">
+    <iframe id="downloadFrame" style="display:none"></iframe>
+    <section id="popUp-dialog-box"></section>
+    <section class="row form-group">
+        <label class="col-md-2 control-label">Mctr No</label>
+        <section class="col-md-3">
+            @Html.TextBoxFor(model => model.MCTR_NO, new { @class = "form-control col-md-2",@readonly = "readonly" })
+        </section>
+    </section>
+    <section class="row">
+        <section class="col-md-12">
+            <table id="mctrAttachmentsGrid"></table>
+        </section>
+        <section class="col-md-12 m-t-5">
+            <section class="align-right ">
+                <button href="#" class="btn btn-group btn-XS" id="attachmentAddBtn">Add File</button>
+                <button href="#" data-dismiss="modal" class="btn btn-group btn-XS" id="attachmentCloseBtn">Close</button>
+            </section>
+        </section>
+    </section>
+</div>
+

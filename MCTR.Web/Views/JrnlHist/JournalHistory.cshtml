@@ -1,0 +1,49 @@
+﻿
+<script src="~/scripts/MCTR/JournalsHistory.js"></script>
+<script type="text/javascript" src="~/scripts/moment.js"></script>
+
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables &gt; Journals History</section>
+    <h4>Journals History Window</h4>
+    <hr>
+</section>
+
+<section class="col-md-12 m-t-50 ">
+    <section id='alertModal' class='modal fade in'  data-keyboard="false" data-backdrop="static">
+        <section class="modal-dialog modal-lg">
+            <section class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">MCTR JOURNAL HISTORY VIEW WARNING</h4>
+                </div>
+                <section class="modal-body">
+                    <section class="alert alert-warning">
+                        <p><span class="glyphicon glyphicon-warning-sign mr-10"></span>MCTR Journals are kept for atleast 200 days before being deleted.<br />Plus, You can only view journals based on your assigned business unit entries setup in the MCTR ROLE BU access authority table.</p>
+                    </section>
+                    <section class="align-right ">
+                        <button href="#" class="btn btn-primary"data-dismiss="modal" id="okBtn">OK</button>
+                     </section>
+                    </section>
+            </section>
+        </section>
+    </section>
+    <section class="row">
+        <section class="form-group">
+            <section class="row">
+                <label class="control-label col-md-2">Select Journal Date</label>
+                <section class="col-md-10">
+                    <section class="row no-gutter">
+                        <section class="col-md-2 mr-3">
+                            <input class="form-control" id="selectedJrnlDate" />
+                        </section>
+                        <button type="button" data-toggle="modal" data-target="#mctrModal" data-backdrop="static" href=@Url.Action("getRgJhistDateLOV", "JrnlHist") class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-calendar font-15"></span></button>
+
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+    <section class="row">
+        <table id="JrnlHistory" class="table table-condensed"></table>
+        <div id="pager"></div>
+    </section>
+</section>

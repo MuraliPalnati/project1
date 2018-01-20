@@ -1,0 +1,29 @@
+﻿
+<script src="~/scripts/MCTR/RoleBUGroupPopup.js"></script>
+
+
+    <section class="row form-group">
+        <section class="col-md-12" id="stackedModalMsg"></section>
+        <label class="col-md-1 control-label">Find</label>
+        <section class="row no-gutter">
+            <section class="col-md-10 mr-3">
+                <input class="form-control" id="searchValue" />
+            </section>
+            <button class="btn btn-group btn-xs search-jq" id="findBtn"><span class="glyphicon glyphicon-search font-15"></span></button>
+        </section>
+
+    </section>
+    <section class="row">
+        <section class="col-md-12">
+            <input type="hidden" id ="rowId" value=@Model />
+            <table id="mctrBUnitsGrid"></table>
+            <section id="buPager"></section>
+
+        </section>
+        <section class="col-md-12 m-t-5">
+            <section class="align-right ">
+                <button href="#" class="btn btn-group btn-XS" id="stackedOkBtn">OK</button>
+                <button href="#" data-dismiss="modal" class="btn btn-group btn-XS" id="cancelBtn">Cancel</button>
+            </section>
+        </section>
+    </section>

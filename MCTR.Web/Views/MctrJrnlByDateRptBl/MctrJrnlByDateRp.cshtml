@@ -1,0 +1,128 @@
+﻿
+<script src="~/Scripts/MCTR/MCTR.js"></script>
+
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Report Menu  &gt; Journaled MCTRs - Date Sort</section>
+    <h4>Report Journaled MCTRs by Date</h4>
+    <hr>
+</section>
+
+<section class="col-md-12 m-t-50 ">
+    <section id="dialog-box"></section>
+    <section class="row form-horizontal">
+        <section class="form-group">
+            <label class="control-label col-md-2 mr-10">Bus Unit GL From</label>
+            <section class="col-md-2">
+                <input class="form-control col-md-6 input-medium mr-3" id="bUGLFrom" readonly/>
+                <button type="button" data-toggle="modal" data-target="#mctrModal" data-backdrop="static" href =@Url.Action("selectionbutBuWhenButtonPressedOpenLOV","MctrOpenReportsBl") class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit font-15"></span></button>
+            </section>
+        </section>
+        <section class="col-md-7"><h4 class="text-danger align-center"><strong>***Optional***</strong></h4></section>
+    </section>
+    <section class="row">
+        <section class="col-md-2 m-t-30">
+            <label class="control-label">Financial Controller or Originator</label>
+        </section>
+        <section class="table-responsive col-md-4">
+            <table class="table borderless">
+                <thead>
+                    <tr>
+                        <th class="col-md-1">BEMS</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-md-1"><input class="form-control" id="finCntrlBEMS" readonly/></td>
+                        <td class="col-md-1"><input class="form-control" id="finCntrlFirstName" readonly/></td>
+                        <td class="col-md-1"><input class="form-control" id="finCntrlLastName" readonly/></td>
+                        <td class="button"><button type="button" data-toggle="modal" data-target="#mctrModal" data-backdrop="static" href=@Url.Action("getRgFinCtlLOV", "MctrJrnlByDateRptBl") class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit font-15"></span></button></td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-1"><input class="form-control" id="origBEMS" readonly/></td>
+                        <td class="col-md-1"><input class="form-control" id="origFirstName" readonly/></td>
+                        <td class="col-md-1"><input class="form-control" id="origLastName" readonly/></td>
+                        <td class="button"><button type="button" data-toggle="modal" data-target="#mctrModal" data-backdrop="static" href=@Url.Action("getRgOrigLOV", "MctrJrnlByDateRptBl")  class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit font-15"></span></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="table-responsive col-md-4">
+            <table class="table borderless">
+                <thead>
+                    <tr>
+                        <th>From Date</th>
+                        <th></th>
+                        <th>To Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-md-2"><input class="form-control" id="fromDate" readonly/>
+                        <td class="button"><button type="button" data-toggle="modal" data-target="#mctrModal" data-backdrop="static" href=@Url.Action("getRgFromDateLOV", "MctrJrnlByDateRptBl") class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit font-15"></span></button></td>
+
+                        <td class="col-md-2"><input class="form-control" id="toDate" readonly/></td>
+                        <td class="button"><button type="button" data-toggle="modal" data-target="#mctrModal" data-backdrop="static" href=@Url.Action("getRgToDateLOV", "MctrJrnlByDateRptBl") class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit font-15"></span></button></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+    <section class="row align-center">
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#iFrameModal" data-backdrop="static" id="createReportBtn">Create Report</button>
+        <iframe id="DownloadFrame" style="display:none"></iframe>
+        <button href="#" class="btn btn-primary btn-sm" id="downloadExelbutton">Download To Excel</button>
+    </section>
+
+    <div id='iFrameModal' class='modal fade in'>
+        <div class="modal-dialog">
+            <div class="modal-content modal-xtralg">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <section class="row">
+                        <iframe class="col-md-12" src="" id="iFrame" width="120" height="450"></iframe>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $('#createReportBtn').click(function () {
+            var url = getBaseUrl('/Reports/JrnlByDate.aspx')+'?busUnit=' + $('#bUGLFrom').val() + '&&fromDate=' + $('#fromDate').val() + '&&toDate=' + $('#fromDate').val() + '&&bemsFinCntrl=' + $('#finCntrlBEMS').val() + '&&bemsOrig=' + $('#origBEMS').val() + '';
+            $('#iFrame').attr('src', url)
+        });
+
+        var mctrObj = new MCTR();
+        $('#downloadExelbutton').click(function () {
+            var succesFn = function (data) {
+
+                
+            };
+            var errorFn = function (data) {
+
+            };
+            $('#DownloadFrame').attr('src', getBaseUrl('/Reports/mctrJrnlbyDatedwldExcel')+'?busUnit=' + $('#bUGLFrom').val() + '&&fromDate=' + $('#fromDate').val() + '&&toDate=' + $('#toDate').val() + '&&bemsFinCntrl=' + $('#finCntrlBEMS').val() + '&&bemsOrig=' + $('#origBEMS').val());
+
+        });
+    });
+</script>
+
+
+
+
+
+
+
+

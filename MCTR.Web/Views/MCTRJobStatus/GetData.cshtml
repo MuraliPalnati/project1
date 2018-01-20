@@ -1,0 +1,116 @@
+﻿@model MCTR.DomainEntity.MCTRJobStatus
+@using MCTR.Web.Security;
+
+<script src="~/scripts/modernizr-2.6.2.js"></script>
+<script src="~/scripts/modernizr.custom.26435.js"></script>
+
+<script src="~/scripts/jquery.validate.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/scripts/MCTR/JobStatus.js"></script>
+
+
+
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables  &gt; MCTR Job Status</section>
+    <h4>MCTR Job Status</h4>
+</section>
+
+
+<!-- End of header Affix -->
+<section class="col-md-12 col-sm-12 col-xs-12 m-t-50 container-box">
+    <section id="dialog-box"></section>
+    <section class="row form-horizontal">
+        <section class="col-md-12">
+                    <section class="form-group ">
+                        <section class="col-md-12 ">
+                            <section class="row">
+                                <section class="col-md-6">
+                                    <ul>
+                                        <li><strong> Click Add Button </strong></li>
+                                        <li> <u><strong>and Enter in job status, reason and effective dates</strong></u></li>
+                                    </ul>
+                                    <label class="control-label col-md-4">Job Status Code</label>
+                                    <section class="col-md-2">
+                                        @Html.TextBoxFor(model => model.Job_Status, new { size = 8, style = "margin-left: -5px", @class = "form-control" , @maxLength = "1" })
+                                        @Html.ValidationMessageFor(model => model.Job_Status)
+                                    </section>
+                                </section>
+                                <section class="col-md-4 m-t-10">
+                                    <section class="text-center"><strong><u>Job Control Effective Dates</u></strong></section>
+                                    <section class=" text-center col-md-6">
+                                        <span class=""> DD-MON-YYYY</span>
+                                        <br />
+                                        <section>
+                                            @Html.EditorFor(model => Model.Eff_Date_From, new { htmlAttributes = new { @Value = Model.Eff_Date_From, @class = "form-control datepicker" } })
+                                            @Html.ValidationMessageFor(model => model.Eff_Date_From)
+                                        </section>
+                                    </section>
+                                    <section class=" text-center col-md-6 ">
+                                        <span class=""> DD-MON-YYYY</span>
+                                        <br />
+                                        <section>
+                                            @Html.EditorFor(model => Model.Eff_Date_Thru, new { htmlAttributes = new { @Value = Model.Eff_Date_Thru, @class = "form-control datepicker" } })
+                                            @Html.ValidationMessageFor(model => model.Eff_Date_Thru)
+                                        </section>
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <section class="form-group">
+                        <label class="control-label col-md-2">Reason</label>
+                        <section class="col-md-9">
+                            @Html.TextBoxFor(model => model.reason, new { @class = "form-control" , @maxLength = "100" })
+                        </section>
+                    </section>
+                    <section class="col-md-12">
+                        <hr>
+                    </section>
+                    <section class="form-group">
+                        <label class="control-label col-md-2">Bems Admin</label>
+                        <section class="col-sm-2">
+                            @{ var Bems_Admin = @SessionPerister.BEMSID;}
+                            @Html.TextBoxFor(modelItem => Bems_Admin, new { size = 8, disabled = true, @class = "form-control" })
+                        </section>
+                    </section>
+                    <section class="form-group">
+                        <label class="control-label col-md-2">Date Entered</label>
+                        <section class="col-sm-2 date-changed">
+                            @DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss")
+                         </section>
+                    </section>
+                    <section class="form-group">
+                        <label class="control-label col-md-2">Job ID</label>
+                        <section class="col-sm-2">
+                            @Html.TextBoxFor(model => model.job_Id, new { size = 8, @class = "form-control", disabled = true })
+                        </section>
+                    </section>
+                    <section class="col-md-12">
+                        <hr>
+                        <section class="col-md-offset-0">
+                            <u><strong>Note: Job Control Status and what the code means.</strong> </u>
+                        </section>
+
+                        <section class="col-md-offset-0">
+                            <ul>
+                                <li> <u><strong>0 - Use to reset or cancel job status code 1 or 2 if in effect.</strong></u></li>
+                                <li> &nbsp; &nbsp; &nbsp; Job status code 0 means weekly journals are sent to EAS staging environment. </li>
+                                <li> <u><strong>  1 - Weekly Journal job sends empty journal file to EAS staging environment.</strong></u></li>
+                                <li>&nbsp; &nbsp; &nbsp; Effective dates are required when job status code 1 is entered.</li>
+                                <li><u><strong> 2 - Weekly Journal job does not send anything to EAS per requested by EAS.</strong></u></li>
+                                <li>&nbsp; &nbsp; &nbsp; Effective dates are required when job status code 2 is entered.</li>
+                            </ul>
+                        </section>
+                    </section>
+                </section>
+    </section>
+    <section class="row button_bottom align-right ">
+        <hr />
+        <button href='#' class="btn btn-primary btn-sm" id="add-button"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+        <button class="btn btn-primary btn-sm" id="save"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Save</button>
+    </section>
+</section>
+
+
+
+

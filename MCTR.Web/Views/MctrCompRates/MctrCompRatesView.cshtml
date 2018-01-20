@@ -1,0 +1,73 @@
+﻿<script src="~/scripts/MCTR/CompositeOHRates.js"></script>
+
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables  &gt; Composite OH Rates</section>
+    <h4>MCTR Composite Rates</h4>
+    <hr>
+</section>
+
+<section class="col-md-12 m-t-50 ">
+    <section id="dialog-box"></section>
+    <section class="form-horizontal">
+        <section class="row ">
+            <section class="col-md-1">
+                <input type="text" class="form-control" id="fyear" />
+            </section>
+            <iframe id="compratesDownloadFrame" style="display:none"></iframe>
+            <button href="#" class="btn btn-download" id="dwnloadBtn">Download to Excel</button>
+        </section>
+        <section class="row form-inline m-t-5 m-b-5 m-l-5">
+            <a href="#" id="addNewRow" class="btn btn-default add-row-jqGrid mr-3"><span class="glyphicon glyphicon-plus"></span></a>
+            <a class="btn btn-default btn-download" id="searchBtn">Search</a>
+        </section>
+        <section class="row">
+
+            <section class="col-md-12">
+                <table id="compOHRatesGrid"></table>
+                <div id="pager"></div>
+            </section>
+        </section>
+        <section class="row m-t-2 m-b-5">
+            <section class="col-md-8">
+                <table id="copyTable" class="table-responsive table-condensed">
+                    <tr>
+                        <td width="1%"></td>
+                        <td width="1%">BU</td>
+                        <td width="6%">Year</td>
+                        <td width="1%">Pool RSC</td>
+                        <td width="9%">Lbr OH RSC</td>
+                        <td width="2%"></td>
+                        <td width="1%">BU</td>
+                        <td width="6%">Year</td>
+                        <td width="1%">Pool RSC</td>
+                        <td width="9%">Lbr OH RSC</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><button href="#" class="btn btn-download" id="copyFrom">Copy From:</button></td>
+                        <td><input id="buFrom" class="form-control input-small" required /></td>
+                        <td><input id="yearFrom" type="text" data-mask="9999999" maxlength="4" class="form-control" required /></td>
+                        <td><input id="poolRSCFrom" class="form-control input-medium" required /></td>
+                        <td><input id="lbrOHRscFrom" class="form-control input-medium" /></td>
+                        <td>to:</td>
+                        <td><input id="buTo" class="form-control input-small" required /></td>
+                        <td><input id="yearTo" type="text" class="form-control" required /></td>
+                        <td><input id="poolRSCTo" class="form-control input-medium" required /></td>
+                        <td><input id="lbrOHRscTo" class="form-control input-medium alert-tooltip" /></td>
+                    </tr>
+                </table>
+            </section>
+            <section class="col-md-1 col-md-offset-3">
+                @*<button href="#" class="btn btn-primary btn-sm" id="Save-button"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp; Save</button>*@
+            </section>
+        </section>
+    </section>
+</section>
+
+
+
+
+
+
+
+

@@ -1,0 +1,585 @@
+﻿@model MCTR.DomainEntity.MainMenuLists
+@using MCTR.Web.Security;
+<div class="col-md-12 col-sm-12 col-xs-12  container-box clearfix accoPanel">
+    <section class="heading-well row">
+        <section class="col-md-12">
+            <section class="col-md-10">
+                <p><strong>MCTRs originated or waiting processing by @Model.UserName</strong></p>
+            </section>
+            <div class="acc_symbols col-md-2">
+                <span class="toggle-text">Close All</span>
+                <span class="toggle-buttons">[+]</span>
+            </div>
+        </section>
+    </section>
+    @if (!(SessionPerister.MESSAGEADMINBEMS == SessionPerister.BEMSID))
+    {
+        if (Convert.ToInt32(@Model.MessageStatus) != 0)
+        {
+            <section class="row">
+                <div class="alert alert-warning col-md-12" role="alert">
+                    <section class="col-md-12 col-sm-12 col-xs-12">
+                        <span class="glyphicon glyphicon-warning-sign mr-10"></span>@Model.MessageStatus : @Model.MessageText
+                    </section>
+                </div>
+            </section>
+        }
+    }
+
+    <!-- begin accordions -->
+    <div class="panel-group" id="accordion">
+
+        @if (((Model.OA.Any()) || (Model.OR.Any()) || (Model.PA.Any()) || (Model.AA.Any()) || (Model.SR.Any()) || (Model.JA.Any()) || (Model.IP.Any()) || (Model.NinetyNine.Any()) || (Model.XX.Any()) || (Model.FA.Any()) || (Model.SA.Any()) || (Model.MA.Any()) || (Model.CA.Any()) || (Model.SU.Any()) || (Model.XS.Any()) || (Model.LB.Any()) || (Model.LM.Any())))
+        {
+
+            if (Model.OA.Any())
+            {
+            <!-- BEGIN ACCORDION 1 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Originator Actions</a> </h4>
+                    </div>
+                    <!-- note the "in" class. This makes the panel open by default. Also note the ID. This id correspons to the href above. When href="#collapse1" is triggered, it will open "collapse1" id. Each ID (like any ID used in an html page) should be unique. I think you can also target classes by using href=".someclass" but I haven't tested   -->
+                    <div id="collapse1" class="panel-collapse in h-col">
+                        <div class="panel-body">
+
+                            @foreach (var x in Model.OA)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            <!-- END ACCORDION 1 -->
+            }
+
+            if (Model.OR.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse12">Originator Rejections</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse12" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.OR)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            if (Model.PA.Any())
+            {
+            <!-- BEGIN ACCORDION 2 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Pending Approval</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse2" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.PA)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title  [@x.fmtamt]</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title  [@x.fmtamt]</a><br />
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            <!-- END ACCORDION 2 -->
+            }
+
+            if (Model.SA.Any())
+            {        <!-- BEGIN ACCORDION 5 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Supervisor Approval</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse5" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.SA)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- END ACCORDION 5 -->
+
+            if (Model.FA.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Financial Control Approval</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse7" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.FA)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title </a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.AA.Any())
+            {
+            <!-- BEGIN ACCORDION 3 -->
+                <div class="panel panel-default" id="accountingActions">
+                    <div class="panel-heading">
+                        <h4 class="panel-title "> <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Accounting Actions</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse3" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+
+                            @foreach (var x in Model.AA)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title [@x.fmtamt]</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title  [@x.fmtamt]</a><br />
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            <!-- END ACCORDION 3 -->
+            }
+
+            if (Model.LB.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse17">Labor Accounting Approval</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse17" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.LB)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            if (Model.MA.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">Material Accounting Approval</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse8" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.MA)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.LM.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse18">Labor Matl Acctng Approval</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse18" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.LM)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.CA.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">Cost Accounting Approval</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse9" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.CA)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            if (Model.SR.Any())
+            {        <!-- BEGIN ACCORDION 4 -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Journals Accounting Approval</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse4" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.SR)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            <!-- END ACCORDION 4 -->
+            }
+            if (Model.JA.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">Journal Actions</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse10" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.JA)
+                            {
+
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                                @*<a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - (@x.full_name==null)?((@x.LAST_NAME, @x.FIRST_NAME)):(@x.full_name) - @x.title</a><br />*@
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.IP.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse14">Journals in Process</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse14" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.IP)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.NinetyNine.Any())
+            {
+                <div class="panel panel-default" id="completedMCTR">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse13">Completed MCTR</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse13" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.NinetyNine)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.XX.Any())
+            {
+                <div class="panel panel-default" id="cancelledMCTR">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">Cancelled MCTR</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse11" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.XX)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            if (Model.XS.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse16">Cancelled MCTR - System</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse16" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.XS)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            if (Model.SU.Any())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse15">Suspended</a> </h4>
+                    </div>
+                    <!-- by default this will be closed upon page load since it does not have the "in" class applied to  it.  -->
+                    <div id="collapse15" class="panel-collapse collapse h-col">
+                        <div class="panel-body">
+                            @foreach (var x in Model.SU)
+                            {
+                                if (x.full_name == null)
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.LAST_NAME, @x.FIRST_NAME - @x.title</a><br />
+                                }
+                                else
+                                {
+
+                                    <a class="acc-link" href=@Url.Action("MctrLoad", "MctrCreateForm", new { mctrNo = x.MCTR_NO })>@x.orig_bu -  @x.STATUS_ID - @x.MCTR_NO - @x.full_name - @x.title</a><br />
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+       
+
+        }
+        else
+        {
+            <section class="row">
+                <div class="alert alert-warning col-md-12" role="alert">
+                    <section class="col-md-12 col-sm-12 col-xs-12">
+                        <span class="glyphicon glyphicon-warning-sign mr-10"></span>No in-tray cost transfer entries were found for you that could be listed.
+                    </section>
+                </div>
+            </section>
+        }
+    </div>
+
+
+    <!-- end accordions -->
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.closeall').click(function () {
+            $('.accoPanel').find('.panel-collapse.in')
+        .collapse('hide');
+        });
+        $('.openall').click(function () {
+            $('.accoPanel').find('.panel-collapse:not(".in")')
+            .collapse('show');
+        });
+
+        $('#cbox').show();
+        $('#placeholder').css('min-height', 200);
+        $('.toggle-buttons').click(function () {
+            if (this.textContent == '[–]') {
+                this.textContent = '[+]';
+                $('.toggle-text').text('Close All');
+                $('.accoPanel').find('.panel-collapse:not(".in")')
+                .collapse('show');
+            } else {
+                this.textContent = '[–]';
+                $('.toggle-text').text('Expand All');
+                $('.accoPanel').find('.panel-collapse.in')
+            .collapse('hide');
+            }
+
+        })
+
+        $('#cbox_accountant').click(function () {
+            if ($(this).is(':checked')) {
+                $('#completedMCTR').hide();
+                $('#cancelledMCTR').hide();
+            }
+            else {
+                $('#completedMCTR').show();
+                $('#cancelledMCTR').show();
+            }
+        });
+
+        if (window.location.search != '') {
+            $('#assigned').attr("checked", "checked");
+        }
+
+        $('#assigned').click(function () {
+            if ($(this).is(':checked')) {
+                window.location.href = getBaseUrl("/MctrMainMenu/buttonPalettebutRefreshWhenButtonPressed") + "?cbox=" + $(this).is(':checked');
+            }
+            else {
+                window.location.href = getBaseUrl("/MctrMainMenu/buttonPalettebutRefreshWhenButtonPressed");
+            }
+
+        });
+    });
+</script>

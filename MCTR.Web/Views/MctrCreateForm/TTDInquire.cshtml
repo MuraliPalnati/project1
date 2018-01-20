@@ -1,0 +1,44 @@
+﻿
+<script src="~/scripts/MCTR/Inquire.js"></script>
+
+<div class="modal-header">
+    <button type="button" class="close" id="ttdInquireClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Total To Date Inquiry Window (Using RP_MASTER_VW)</h4>
+</div>
+<div class="modal-body">
+    <section class="row">
+        <section class="col-md-12">
+            <input type="hidden" id="rowId" value=@Model />
+            <table id="ttdInquireGrid"></table>
+            <section id="ttdInquirepager"></section>
+            <table id="ttdInquireFilter" class="m-t-5">
+                <tr>
+                    <td style="width:50px"></td>
+                    <td style="width:40px"></td>
+                    <td style="min-width: 41px"><button id="ohyrBtn" class="btn btn-default btn-xs">OHYR</button></td>
+                    <td style="min-width: 50px;"></td>
+                    <td style="min-width: 100px;"></td>
+                    <td style="min-width: 100px;"><b>&nbsp; &nbsp;[Row No:@Model]</b></td>
+                    <td style="min-width: 55px;"></td>
+                    <td style="min-width: 30px;"></td>
+                    <td style="min-width: 30px;"></td>
+                    <td style="min-width: 31px"></td>
+                    <td style="min-width: 50px;"></td>
+                    <td style="min-width: 48px;"><button id="ptcBtn" class="btn btn-default btn-xs">PTC</button></td>
+                    <td style="min-width: 37px;"><button id="hdptBtn" class="btn btn-default btn-xs">HDPT</button></td>
+                    <td style="min-width: 35px;"><button id="hlBtn" class="btn btn-default btn-xs">HL</button></td>
+                    <td style="min-width: 40px;"><button id="ccBtn" class="btn btn-default btn-xs">CC</button></td>
+                    <td style="min-width: 40px;"><button id="wdptBtn" class="btn btn-default btn-xs">WDPT</button></td>
+                    <td style="min-width: 34px;"><button id="wlBtn" class="btn btn-default btn-xs">WL</button></td>
+                    <td style="min-width: 42px;"><button id="rscBtn" class="btn btn-default btn-xs">RSC</button></td>
+                    <td style="min-width: 100px;"><button id="wpdBtn" class="btn btn-default btn-xs">WPD</button></td>
+                    <td style="min-width: 102px;"><button id="blkBtn" class="btn btn-default btn-xs">BLK</button></td>
+                    <td style="min-width: 95px;"></td>
+                    <td style="min-width: 105px;"><button id="filterBtn" class="btn btn-default btn-xs">FILTER</button></td>
+                </tr>
+            </table>
+        </section>
+
+    </section>
+</div>
+

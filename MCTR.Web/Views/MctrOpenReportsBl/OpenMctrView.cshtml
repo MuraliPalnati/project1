@@ -1,0 +1,73 @@
+﻿<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Report Menu  &gt; Open MCTRs</section>
+    <h4>Report- Open MCTR</h4>
+    <hr>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#createOrigReportBtn').click(function () {
+            var url = getBaseUrl('/Reports/OrignatorSort.aspx')+'?busUnit=' + $('#bUGLFrom').val() + '';
+            $('#iFrame').attr('src', url)
+        });
+
+        $('#createStatReportBtn').click(function () {
+            var url = getBaseUrl('/Reports/OpenStatusSort.aspx')+'?busUnit=' + $('#bUGLFrom').val() + '';
+            $('#iFrame').attr('src', url)
+        });
+
+        $('#createFinCtrlReportBtn').click(function () {
+            var url = getBaseUrl('/Reports/PrintFinCtrlSort.aspx')+'?busUnit=' + $('#bUGLFrom').val() + '';
+            $('#iFrame').attr('src', url)
+        });
+    });
+</script>
+    <section class="col-md-12 m-t-50 ">
+        <section id="dialog-box"></section>
+        <section class="row form-horizontal align-center">
+            <section class="col-md-offset-4">
+                <section class="row form-group">
+                    <label class="col-md-2 control-label">Bus Unit GL from</label>
+                    <section class="row no-gutter">
+                        <section class="col-md-2 mr-3">
+                            <input class="form-control" id="bUGLFrom" readonly/>
+
+                        </section>
+                        <section class="col-md-1 align-left">
+                            <button class="btn btn-group btn-xs" data-toggle="modal" data-target="#mctrModal" data-backdrop="static" href =@Url.Action("selectionbutBuWhenButtonPressedOpenLOV","MctrOpenReportsBl")><span class="glyphicon glyphicon-edit font-15"></span></button>
+                        </section>
+
+                    </section>
+
+                </section>
+            </section>
+
+            <section class="form-group">
+                <button href="#" class="btn btn-default btn-group-lg open-btn" data-toggle="modal" data-target="#iFrameModal" data-backdrop="static" id="createOrigReportBtn">Originator Sort</button>
+            </section>
+            <section class="form-group">
+                <button href="#" class="btn btn-default btn-group-lg open-btn" data-toggle="modal" data-target="#iFrameModal" data-backdrop="static" id="createStatReportBtn">Status Sort</button>
+            </section>
+            <section class="form-group">
+                <button href="#" class="btn btn-default btn-sm open-btn" data-toggle="modal" data-target="#iFrameModal" data-backdrop="static" id="createFinCtrlReportBtn">Fin Ctl Sort</button>
+            </section>
+            <div id='iFrameModal' class='modal fade in'>
+                <div class="modal-dialog">
+                    <div class="modal-content modal-xtralg">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <section class="row">
+                                <iframe class="col-md-12" src="" id="iFrame" width="120" height="450"></iframe>
+                            </section>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>

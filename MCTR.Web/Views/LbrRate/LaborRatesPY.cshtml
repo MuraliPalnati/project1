@@ -1,0 +1,44 @@
+﻿@model MCTR.DomainEntity.LbrRate
+
+<script src="~/scripts/jquery.validate.js"></script>
+<script src="~/scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/scripts/MCTR/LaborRatePY.js"></script>
+
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables  &gt; Labor Rates - Prior Year</section>
+    <h4>Labor Rates - Prior Year Window</h4>
+    <hr>
+</section>
+
+
+<form id="myForm">
+    <div class="lbrpy-modal-body">
+        <section class="col-md-12 m-t-50 ">
+            <section id="dialog-box"></section>
+            <section class="row form-horizontal">
+                <section class="col-md-3 col-md-offset-9 ">
+                    <section class="form-group ">
+                        <section class="form-group ">
+                            <section class="col-md-4">
+                                @Html.TextBoxFor(model => model.f_year, new { size = 8, @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.f_year)
+                            </section>
+                            <section class="col-md-2">
+                                <button href="#" class="btn btn-primary btn-sm " id="dwnloadBtn">Download to Excel</button>
+                            </section>
+                        </section>
+
+                    </section>
+                </section>
+            </section>
+            <section class="row">
+                <table id="tblJQGrid"></table>
+                <div id="pager"></div>
+            </section>
+        </section>
+    </div>
+</form>
+
+
+
+

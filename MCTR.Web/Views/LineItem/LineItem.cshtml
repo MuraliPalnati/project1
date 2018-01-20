@@ -1,0 +1,35 @@
+﻿<script src="~/scripts/MCTR/LineItemSearch.js"></script>
+
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a>  &gt; Line Item Search</section>
+    <h4>Line Item Search</h4>
+    <hr>
+</section>
+
+
+<form id="lineItemSearch">
+    <section class="col-md-12 m-t-50 ">
+        <section id="dialog-box"></section>
+        <section class="row form-inline">
+            <section class="col-md-12">
+                <a class="btn btn-default btn-download" id="searchBtn">Search</a>
+            </section>
+        </section>
+        <section class="row mt-10 no-gutter jQGridRow">
+            <section class="col-md-2">
+                <section class="lineItemFirst">
+                    <table id="lineItemFirst" class="table table-condensed"></table>
+                </section>
+            </section>
+            <section class="col-md-5 overflow lineItemCover">
+                <section class="content">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="lineItemCover" class="table table-condensed"></table>
+                </section>
+            </section>
+            <section class="col-md-5 lineItemInner">
+                    <table id="lineItemInner" class="table table-condensed"></table>
+            </section>
+        </section>
+    </section>
+    <section class="col-md-12" id="pager"></section>
+</form>

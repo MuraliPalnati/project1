@@ -1,0 +1,97 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCTR.Web", "MCTR.Web\MCTR.Web.csproj", "{E4453171-A633-4EE1-B4C8-DB4717003AC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCTR.RESTService", "MCTR.RESTService\MCTR.RESTService.csproj", "{A8F95A83-2DC1-42BB-B6A8-AE4BB55395CF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8C691301-D094-42DE-9AB2-FF3849AA81CD} = {8C691301-D094-42DE-9AB2-FF3849AA81CD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCTR.DomainEntity", "MCTR.DomainEntity\MCTR.DomainEntity.csproj", "{CA3A66BD-32F6-4B2B-860F-7428D5E010BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCTR.DataEntity", "MCTR.DataEntity\MCTR.DataEntity.csproj", "{EFE689EA-67D0-49F4-83A8-DEAAD938E11F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCTR.DataAccess", "MCTR.DataAccess\MCTR.DataAccess.csproj", "{A2AD499D-028B-433E-BC40-DCE1D4E763A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCTR.BusinessInterface", "MCTR.BusinessInterface\MCTR.BusinessInterface.csproj", "{0E2246F2-3FF2-4652-A01A-78AB65347270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCTR.Business", "MCTR.Business\MCTR.Business.csproj", "{07F00C29-812D-4458-B3FA-0D4ECBC2CD82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCTR.DataAccessInterface", "MCTR.DataAccessInterface\MCTR.DataAccessInterface.csproj", "{8C691301-D094-42DE-9AB2-FF3849AA81CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4453171-A633-4EE1-B4C8-DB4717003AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4453171-A633-4EE1-B4C8-DB4717003AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4453171-A633-4EE1-B4C8-DB4717003AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4453171-A633-4EE1-B4C8-DB4717003AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F95A83-2DC1-42BB-B6A8-AE4BB55395CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F95A83-2DC1-42BB-B6A8-AE4BB55395CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F95A83-2DC1-42BB-B6A8-AE4BB55395CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F95A83-2DC1-42BB-B6A8-AE4BB55395CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA3A66BD-32F6-4B2B-860F-7428D5E010BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA3A66BD-32F6-4B2B-860F-7428D5E010BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA3A66BD-32F6-4B2B-860F-7428D5E010BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA3A66BD-32F6-4B2B-860F-7428D5E010BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE689EA-67D0-49F4-83A8-DEAAD938E11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE689EA-67D0-49F4-83A8-DEAAD938E11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE689EA-67D0-49F4-83A8-DEAAD938E11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE689EA-67D0-49F4-83A8-DEAAD938E11F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2AD499D-028B-433E-BC40-DCE1D4E763A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2AD499D-028B-433E-BC40-DCE1D4E763A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2AD499D-028B-433E-BC40-DCE1D4E763A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2AD499D-028B-433E-BC40-DCE1D4E763A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E2246F2-3FF2-4652-A01A-78AB65347270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E2246F2-3FF2-4652-A01A-78AB65347270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E2246F2-3FF2-4652-A01A-78AB65347270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E2246F2-3FF2-4652-A01A-78AB65347270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07F00C29-812D-4458-B3FA-0D4ECBC2CD82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F00C29-812D-4458-B3FA-0D4ECBC2CD82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F00C29-812D-4458-B3FA-0D4ECBC2CD82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F00C29-812D-4458-B3FA-0D4ECBC2CD82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C691301-D094-42DE-9AB2-FF3849AA81CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C691301-D094-42DE-9AB2-FF3849AA81CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C691301-D094-42DE-9AB2-FF3849AA81CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C691301-D094-42DE-9AB2-FF3849AA81CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://chn-hclt-aero6:8080/tfs/boeingbu
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MCTR.Web\\MCTR.Web.csproj
+		SccProjectName1 = MCTR.Web
+		SccLocalPath1 = MCTR.Web
+		SccProjectUniqueName2 = MCTR.RESTService\\MCTR.RESTService.csproj
+		SccProjectName2 = MCTR.RESTService
+		SccLocalPath2 = MCTR.RESTService
+		SccProjectUniqueName3 = MCTR.DataAccessInterface\\MCTR.DataAccessInterface.csproj
+		SccProjectName3 = MCTR.DataAccessInterface
+		SccLocalPath3 = MCTR.DataAccessInterface
+		SccProjectUniqueName4 = MCTR.DataEntity\\MCTR.DataEntity.csproj
+		SccProjectName4 = MCTR.DataEntity
+		SccLocalPath4 = MCTR.DataEntity
+		SccProjectUniqueName5 = MCTR.DataAccess\\MCTR.DataAccess.csproj
+		SccProjectName5 = MCTR.DataAccess
+		SccLocalPath5 = MCTR.DataAccess
+		SccProjectUniqueName6 = MCTR.BusinessInterface\\MCTR.BusinessInterface.csproj
+		SccProjectName6 = MCTR.BusinessInterface
+		SccLocalPath6 = MCTR.BusinessInterface
+		SccProjectUniqueName7 = MCTR.Business\\MCTR.Business.csproj
+		SccProjectName7 = MCTR.Business
+		SccLocalPath7 = MCTR.Business
+		SccProjectUniqueName8 = MCTR.DomainEntity\\MCTR.DomainEntity.csproj
+		SccProjectName8 = MCTR.DomainEntity
+		SccLocalPath8 = MCTR.DomainEntity
+	EndGlobalSection
+EndGlobal

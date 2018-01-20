@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0E2246F2-3FF2-4652-A01A-78AB65347270}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MCTR.BusinessInterface</RootNamespace>
+    <AssemblyName>MCTR.BusinessInterface</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IAccountBusiness.cs" />
+    <Compile Include="IBuProfileBusiness.cs" />
+    <Compile Include="ICreateMctrLovBusiness.cs" />
+    <Compile Include="ICustTypeBusiness.cs" />
+    <Compile Include="IJrnlHistBusiness.cs" />
+    <Compile Include="IJrnlWeekBusiness.cs" />
+    <Compile Include="ILbrRateBusiness.cs" />
+    <Compile Include="ILbrRateCyLogic.cs" />
+    <Compile Include="ILineItemBusiness.cs" />
+    <Compile Include="IMctrAttachBlBusiness.cs" />
+    <Compile Include="IMctrCompRatesBusiness.cs" />
+    <Compile Include="IMctrCreateFormBusiness.cs" />
+    <Compile Include="IMctrIncrRatesBusiness.cs" />
+    <Compile Include="IMCTRJobStatusBusiness.cs" />
+    <Compile Include="IMctrJrnlByDateRptBlBusiness.cs" />
+    <Compile Include="IMctrLogAcctBusiness.cs" />
+    <Compile Include="IMctrLogBusiness.cs" />
+    <Compile Include="IMctrMainMenuBusiness.cs" />
+    <Compile Include="IMctrMessageStatusBusiness.cs" />
+    <Compile Include="IMctrOffsetFormBlBusiness.cs" />
+    <Compile Include="IMctrOhFormBlBusiness.cs" />
+    <Compile Include="IMctrOpenReportsBlBusiness.cs" />
+    <Compile Include="IMctrRptsAdmnBlBusiness.cs" />
+    <Compile Include="IMctrWkipJrnlsBlBusiness.cs" />
+    <Compile Include="IPerCheckBlBusiness.cs" />
+    <Compile Include="IPerStatusBlBusiness.cs" />
+    <Compile Include="IRoleBuBusiness.cs" />
+    <Compile Include="IRoleBusiness.cs" />
+    <Compile Include="IRoleListBusiness.cs" />
+    <Compile Include="IRoleListNewuserBusiness.cs" />
+    <Compile Include="IStatHistBlBusiness.cs" />
+    <Compile Include="IStatusBusiness.cs" />
+    <Compile Include="ITranstypeBusiness.cs" />
+    <Compile Include="ITtdCheckBlBusiness.cs" />
+    <Compile Include="IReportsBusiness.cs" />
+    <Compile Include="ITtdStatusBlBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MCTR.DataAccess\MCTR.DataAccess.csproj">
+      <Project>{a2ad499d-028b-433e-bc40-dce1d4e763a6}</Project>
+      <Name>MCTR.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.DataEntity\MCTR.DataEntity.csproj">
+      <Project>{efe689ea-67d0-49f4-83a8-deaad938e11f}</Project>
+      <Name>MCTR.DataEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.DomainEntity\MCTR.DomainEntity.csproj">
+      <Project>{ca3a66bd-32f6-4b2b-860f-7428d5e010be}</Project>
+      <Name>MCTR.DomainEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,23 @@
+﻿@model MCTR.DomainEntity.LbrRateCy
+
+<script src="~/scripts/MCTR/LaborRate.js"></script>
+<style type="text/css">
+    input {
+        text-transform: uppercase;
+    }
+</style>
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables &gt; Labor Rates - Current Year</section>
+    <h4>Labor Rates - Current Year Window</h4>
+    <hr>
+</section>
+
+<section class="col-md-12 m-t-50 ">
+    <section id="dialog-box"></section>
+    <section class="row">
+        <table id="tblJQGrid"></table>
+        <div id="pager"></div>
+    </section>
+</section>
+
+

@@ -1,0 +1,22 @@
+﻿<script src="~/scripts/MCTR/ProjectFromPrompt.js"></script>
+<section class="row form-horizontal">
+<section class="col-md-12">
+    <p>More than 100 Projects are valid for Activity chosen.</p>
+    <p>Please type in Project or use default value provided to narrow list .(Wild cards % or _ are acceptable.)</p>
+    <p class="mt-10">Response time will be long if Project ID is not specific!</p>
+</section>
+    <section class="col-md-12">
+        <section class="col-md-7">
+            <section class="form-group">
+                <label class="col-md-12">Project ID (From)</label>
+                <section class="col-md-12">
+                    <input type="hidden" id="rowId" value="@ViewData["rowId"]" />
+                    <input class="form-control" id="ProjectFromPrompt" type="text" />
+                </section>
+            </section>
+        </section>
+        <section class="col-md-4 m-t-17">
+            <button href="#" class="btn btn-primary btn-XS" id="getListBtn">Get List</button>
+        </section>
+    </section>
+</section>

@@ -1,0 +1,71 @@
+﻿@model MCTR.DomainEntity.RoleListNewuser
+
+<script src="~/scripts/MCTR/RoleUser.js"></script>
+
+<section class="myAffix">
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables  &gt; MCTR Role User List</section>
+    <h4>EMPLOYEE LIST</h4>
+    <hr>
+</section>
+
+<section class="col-md-12 m-t-50 form-horizontal">
+
+        <section class="row">
+            <section class="row">
+                <section class="col-md-9"><strong>New Users Sorted by Last Name &nbsp &nbsp [This Read Only View form is used to grant MCTR program ROLE access to new users.]</strong></section>
+            </section>
+            <section class=" m-t-10">
+                <section id="dialog-box"></section>
+                <table class="roleList" id="jGrid"></table>
+                <div id="pager"></div>
+            </section>
+
+        <section class="form-group m-t-10">
+            <section class="col-md-9">
+                <section class="row ">
+                    <section class="form-group col-md-6">
+                        <label class="control-label col-md-7">Find Last Names that start with:</label>
+                        <section class="col-md-5">
+                            <input class="form-control" id="LastName" maxlength="30" />
+                        </section>
+                    </section>
+                    <section class="form-group col-md-6">
+                        <label class="control-label col-md-7">Find BEMS Ids that contains:</label>
+                        <section class="col-md-5">
+                            <input class="form-control" id="BemsId" maxlength="7" />
+                        </section>
+                    </section>
+                </section>
+                <section class="row ">
+                    <section class="form-group col-md-6">
+                        <label class="control-label col-md-7">Find Departments that start with:</label>
+                        <section class="col-md-5">
+                            <input class="form-control" id="Depart" maxlength="4" />
+                        </section>
+                    </section>
+                    <section class="form-group col-md-6">
+                        <label class="control-label col-md-7">Find Business Units that start with:</label>
+                        <section class="col-md-5">
+                            <input class="form-control" id="BuUnit" maxlength="2"/>
+                        </section>
+                    </section>
+
+                </section>
+
+                <section class="row align-center sub-affix">
+                    <button href='#' class="btn btn-primary btn-sm" id="find-button"><span class="glyphicon glyphicon-search"></span>&nbsp;Find</button>
+                </section>
+
+            </section>
+
+            <section class="col-md-3">
+                This is a read only screen. Please use the FIND button to list MCTR users and please use the GoTo button to grant MCTR program access to new users.
+            </section>
+        </section>
+    </section>
+    </section>
+
+
+
+
+

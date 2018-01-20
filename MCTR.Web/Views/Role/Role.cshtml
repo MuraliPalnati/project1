@@ -1,0 +1,267 @@
+﻿@model MCTR.DomainEntity.RoleList
+    
+<script src="~/scripts/MCTR/MCTRRole.js" type="text/javascript"></script>
+
+<section class="myAffix">
+
+@if (TempData["NewUser"] != null)
+{
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables &gt; <a id="go-back" href="#">Add MCTR User Roles</a> &gt; MCTR Role</section>
+}
+else
+{
+    <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables &gt; <a id="go-back" href="#">Maintain MCTR User Roles</a> &gt; MCTR Role</section>
+}
+    <h4>MCTR Role</h4>
+    <hr>
+</section>
+
+
+
+@using (Html.BeginForm("Save", "Role", FormMethod.Post))
+{
+<section class="col-md-12 col-sm-12 col-xs-12 m-t-50 container-box">
+ @if (TempData["Success"] != null)
+ {
+    <p class="alert alert-success" id="successMessage">@TempData["Success"]<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
+ }
+    <input type="hidden" value=@TempData["NewUser"] id="newRecordFlag" />
+        <section id="dialog-box"></section>
+    <section class="row form-horizontal col-md-12">
+        <section class="col-md-3 ">
+            <fieldset class="min-ht-role-lhs">
+                <section class="m-t-10">
+                    <section class="form-group">
+                        <label class="control-label col-md-7" style="color:red">* BEMS</label>
+                        <section class="col-sm-5">
+                            @using MCTR.Web.Security;
+                            @Html.Hidden("SessionBems", @SessionPerister.BEMSID)
+                            @Html.TextBoxFor(model => model.bems, new { @class = "form-control" })
+                        </section>
+                    </section>
+                    <ul>
+                        <li>
+                            <section class="form-group">
+                                <label class="control-label col-md-9">Active</label>
+                                <section class="col-sm-2 ">
+                                    @Html.CheckBoxFor(model => model.active1)
+                                </section>
+                            </section>
+                        </li>
+                        <li>
+                            <section class="form-group">
+                                <label class="control-label col-md-9">Administrator</label>
+                                <section class="col-sm-2 ">
+                                    @Html.CheckBoxFor(model => model.admin_role1)
+                                </section>
+                            </section>
+                        </li>
+                        <li>
+                            <section class="form-group">
+                                <label class="control-label col-md-9">Financial Control</label>
+                                <section class="col-sm-2 ">
+                                    @Html.CheckBoxFor(model => model.fin_control_role1)
+                                </section>
+                            </section>
+                        </li>
+                        <li>
+                            <section class="form-group">
+                                <label class="control-label col-md-9">Accounting</label>
+                                <section class="col-sm-2 ">
+                                    @{ var accountantrole = Model.accountant_role == "Y"; }
+                                    @Html.CheckBoxFor(model => model.accountant_role1)
+                                </section>
+                            </section>
+                        </li>
+                        <li>
+                            <section class="form-group">
+                                <label class="control-label col-md-9">Labor Accounting</label>
+                                <section class="col-sm-2 ">
+                                    @Html.CheckBoxFor(model => model.lbr_acct_role1)
+                                </section>
+                            </section>
+                        </li>
+                        <li>
+                            <section class="form-group">
+                                <label class="control-label col-md-9">Material Accounting</label>
+                                <section class="col-sm-2 ">
+                                    @Html.CheckBoxFor(model => model.matl_acct_role1)
+                                </section>
+                            </section>
+                        </li>
+                        <li>
+                            <section class="form-group">
+                                <label class="control-label col-md-9">Cost Accounting</label>
+                                <section class="col-sm-2 ">
+                                    @Html.CheckBoxFor(model => model.cost_acct_role1)
+                                </section>
+                            </section>
+                        </li>
+                        <li>
+                            <section class="form-group">
+                                <label class="control-label col-md-9">Journal Approver</label>
+                                <section class="col-sm-2 ">
+                                    @Html.CheckBoxFor(model => model.sr_acct_role1)
+                                </section>
+                            </section>
+                        </li>
+                    </ul>
+                </section>
+            </fieldset>
+        </section>
+        <section class="col-md-9">
+            <fieldset class="m-b-5">
+                <section class="form-group">
+                    <label class="control-label col-md-2">Last Name</label>
+                    <section class="col-sm-5">
+                        @Html.TextBoxFor(model => model.last_name, new { @class = "form-control" , @readonly="readonly"})
+                    </section>
+                </section>
+                <section class="form-group">
+                    <label class="control-label col-md-2 ">First Name</label>
+                    <section class="col-sm-5">
+                        @Html.TextBoxFor(model => model.first_name, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                </section>
+                <section class="form-group">
+                    <label class="control-label col-md-2 ">Status</label>
+                    <section class="col-sm-1">
+                        @Html.TextBoxFor(model => model.emp_status, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                </section>
+                <section class="row form-group">
+                    <label class="control-label col-md-2">Bus Unit</label>
+                    <section class=" col-md-2">
+                        @Html.TextBoxFor(model => model.bus_unit, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                    <label class="control-label col-md-1">Actg Log</label>
+                    <section class=" col-md-1">
+                        @Html.TextBoxFor(model => model.acctg_loc_cdm, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                    <label class="control-label col-md-1">Dept</label>
+                    <section class=" col-md-2">
+                        @Html.TextBoxFor(model => model.deptno, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                    <label class="control-label col-md-1">Grp Cd</label>
+                    <section class=" col-md-1">
+                        @Html.TextBoxFor(model => model.group_cd7, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                </section>
+                <section class="form-group">
+                    <label class="control-label col-md-2">Phone</label>
+                    <section class="col-md-4">
+                        @Html.TextBoxFor(model => model.work_phone, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                </section>
+                <section class="form-group">
+                    <label class="control-label col-md-2">Email</label>
+                    <section class="col-md-10">
+                        @Html.TextBoxFor(model => model.stable_email, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                </section>
+                <section class="form-group">
+                    <label class="control-label col-md-2">Mail Code</label>
+                    <section class="col-md-4">
+                        @Html.TextBoxFor(model => model.mail_code, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                </section>
+                <section class="row form-group">
+                    <label class="control-label col-md-2">Mgr BEMS</label>
+                    <section class=" col-md-3">
+                        @Html.TextBoxFor(model => model.mgr_id, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                    <label class="control-label col-md-1">Name</label>
+                    <section class=" col-md-3">
+                        @{ var ManagerName = Model.la_mgr_last_name + ", " + Model.la_mgr_first_name;}
+                        @Html.TextBoxFor(model => ManagerName, new { @class = "form-control", @readonly = "readonly" })
+                    </section>
+                </section>
+            </fieldset>
+            <fieldset>
+                <legend>Group and BU Access for Processing Roles</legend>
+                <section class="row">
+                    <ul>
+                        
+                        <li><a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mctrModal" data-backdrop="false"  href=@Url.Action("GetAllRoleBUs", "RoleBu") id="processGrpBUbutton">Processing Groups and BUs</a></li>
+                        <li>
+                            <!-- Button HTML (to Trigger Modal) -->
+                            <!-- Modal HTML -->
+                        </li>
+                    </ul>
+
+                </section>
+            </fieldset>
+        </section>
+
+    </section>
+    <section class="row col-md-12">
+        <section class=" col-md-12">
+            <fieldset>
+                <legend>Maintenance</legend>
+                <section class="col-md-4 form-horizontal ">
+                    <section class="form-group">
+                        <label class="control-label col-md-5">Date Initial Add</label>
+                        <section class="col-md-7">
+                            @Html.TextBoxFor(model =>model.date_init_add, "{0:dd-MMM-yyyy}", new { @class = "datefield form-control", @readonly = "readonly" })
+                        </section>
+                    </section>
+                    <section class="form-group">
+                        <label class="control-label col-md-5">Date Updated</label>
+                        <section class="col-md-7">
+                            @Html.TextBoxFor(model => model.date_update, "{0:dd-MMM-yyyy}", new { @class = "datefield form-control", @readonly = "readonly" })
+                        </section>
+                    </section>
+                    <section class="form-group">
+                        <label class="control-label col-md-5">Administrator</label>
+                        <section class="col-md-7">
+                            
+                            @Html.TextBoxFor(model => model.bems_admin, new { @class = "form-control", @readonly = "readonly" })
+                        </section>
+                    </section>
+                </section>
+                <section class="col-md-8">
+                    <section class="row ">
+                        <label class="control-label col-md-12"><strong>Last updated Accounting Budget:</strong></label>
+                 </section><section class="row form-horizontal no-gutter">
+                        <section class="col-md-12 form-group ">
+                            <label class="control-label col-md-2 mr-10">Bus Unit</label>
+                            <section class=" col-md-1 mr-10">
+                                @Html.TextBoxFor(model => model.last_bu, new { @class = "form-control", @readonly = "readonly" })
+                            </section>
+                            <label class="control-label col-md-1 mr-10">Actg Log</label>
+                            <section class=" col-md-1 mr-10">
+                                @Html.TextBoxFor(model => model.last_loc, new { @class = "form-control", @readonly = "readonly" })
+                            </section>
+                            <label class="control-label col-md-1 mr-10">Dept</label>
+                            <section class=" col-md-1 mr-35">
+                                @Html.TextBoxFor(model => model.last_dept, new { @class = "form-control", @readonly = "readonly" })
+                            </section>
+                            <section class=" col-md-3">
+                                <button href='#' class="btn btn-primary btn-sm" id="add-button">Reset Acctng Budget</button>
+                            </section>
+                        </section>
+                        <section class="row form-group">
+                            <label class="control-label col-md-3 mr-10">Date/Time Last logon</label>
+                            <section class=" col-md-3">
+                               @* @{ var lastLogon = model.last_logon.HasValue ? model.last_logon.Value.ToString("dd-MMM-yyyy") : "";}*@
+                                @Html.TextBoxFor(model => model.last_logon, "{0:yyyy-MM-dd hh:mm tt}", new { @class = "form-control", @readonly = "readonly" })
+                            </section>
+                            <label class="control-label col-md-3 mr-10">Days since last logon</label>
+                            <section class=" col-md-2">
+                                @Html.TextBoxFor(model => model.last_logon_days, new { @class = "form-control", @readonly = "readonly"})
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </fieldset>
+        </section>
+    </section>
+    <section class="row col-md-12 align-center m-t-5">
+        <hr>
+        <button href="#" class="btn btn-primary btn-sm" id="Save-button"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp; Save</button> 
+    </section>
+</section>
+                                        }
+
+
+

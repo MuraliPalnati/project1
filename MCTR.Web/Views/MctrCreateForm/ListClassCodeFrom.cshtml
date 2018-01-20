@@ -1,0 +1,29 @@
+﻿
+<script src="~/scripts/MCTR/ListClassCodeFrom.js"></script>
+@*<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Class Codes (From) Listing</h4>
+</div>*@
+
+    <section class="row form-group">
+        <label class="col-md-1 control-label">Find</label>
+        <section class="row no-gutter">
+            <section class="col-md-10 mr-3">
+                <input class="form-control" id="searchValue"  @*value="@ViewData["deptID"]"*@ />
+            </section>
+            <button class="btn btn-group btn-xs search-jq" id="findBtn"><span class="glyphicon glyphicon-search font-15"></span></button>
+        </section>
+        <input type="hidden" id="rowId" value="@ViewData["rowID"]" />
+    </section>
+    <section class="row">
+        <section class="col-md-12">
+            <table id="listClassCodeFromGrid"></table>
+            <div id="pager"></div>
+        </section>
+        <section class="col-md-12 m-t-5">
+            <section class="align-right ">
+                <button href="#" class="btn btn-group btn-XS" id="listClassCodeFromOkBtn">OK</button>
+                <button href="#" data-dismiss="modal" class="btn btn-group btn-XS" id="listClassCodecancelBtn">Cancel</button>
+            </section>
+        </section>
+    </section>

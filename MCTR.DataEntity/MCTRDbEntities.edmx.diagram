@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5672822129304538b0cb68c575bfe1d2" Name="Diagram1" ZoomLevel="10">
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_ATTACH" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_BU_PROFILE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_BUS_UNIT_MGMT" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_COMMENT" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_COMP_RATES" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_CONTRACT_HIRE" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_CUST_TYPE" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_DIV_OH_RATE" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_DOH_2002_RATE" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_EMPLOYEE_V" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_HEADER" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_INCR_RATES" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_JOB_LOG" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_JOB_STATUS" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_JOURNAL" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_JOURNAL_HISTORY" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_JOURNAL_WKLY" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_LBR_RATE" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_LINE_ITEM" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_LOG_ACCT_CHG" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_LOG_ORIG_CHG" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_MAILBOX" Width="1.5" PointX="18.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_MESSAGE" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_MESSAGE_ADMIN" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_OFFSET" Width="1.5" PointX="5.25" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_OH_RATE" Width="1.5" PointX="18.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_OVRHD" Width="1.5" PointX="10.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_PER_BACKUP" Width="1.5" PointX="10.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_PS_BUS_UNIT_TBL7_MV" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_REASON_CODE" Width="1.5" PointX="18.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_REJECT_CODE" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_ROLE" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_ROLE_BU" Width="1.5" PointX="3" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_ROLE_QTRLY_RPT" Width="1.5" PointX="20.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_RSC_MV" Width="1.5" PointX="20.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_SA_VA_RATE" Width="1.5" PointX="20.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_STATUS" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_STATUS_HIST" Width="1.5" PointX="5.25" PointY="49.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_TOKEN" Width="1.5" PointX="18.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_TTD_BACKUP" Width="1.5" PointX="10.5" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.TEST1" Width="1.5" PointX="20.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_CAL_COW_TBL" Width="1.5" PointX="12.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_LOCN_DEPT_MV" Width="1.5" PointX="14.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_LOCN_MV" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_MTH_CAL_MV" Width="1.5" PointX="22.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_ROLE_CHG_LOG" Width="1.5" PointX="22.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_TRANS_TYPE" Width="1.5" PointX="22.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZMCTR_RP_MASTER_AFF" Width="1.5" PointX="22.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZMCTR_RP_MASTER_TMP" Width="1.5" PointX="22.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_ACCOUNT" Width="1.5" PointX="16.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_ACTIVITY" Width="1.5" PointX="18.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_APPL_ID" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_BULK_ALCTN" Width="1.5" PointX="24.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_CLASS_CODE" Width="1.5" PointX="24.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_ESTMT_PRIC" Width="1.5" PointX="24.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_LABOR_RATE" Width="1.5" PointX="24.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_MAJOR_ACCT" Width="1.5" PointX="24.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_PROJECT" Width="1.5" PointX="24.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_WP_LOCDEPT" Width="1.5" PointX="12.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.ZTBL_WP_MASTER" Width="1.5" PointX="24.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_ACCOUNT_V" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_ACTIVITY_V" Width="1.5" PointX="26.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_APPL_ID_V" Width="1.5" PointX="26.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_BULK_ALCTN_V" Width="1.5" PointX="26.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_CLASS_CODE_V" Width="1.5" PointX="26.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_COW_V" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_ESTMTG_PRICG_V" Width="1.5" PointX="14.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_JOURNAL_STAGED_V" Width="1.5" PointX="26.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_LBR_RATE_V" Width="1.5" PointX="16.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_MAJOR_ACCT_V" Width="1.5" PointX="18.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_PROJECT_V" Width="1.5" PointX="20.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_RP_MASTER_V" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_RP_MASTER_VW" Width="1.5" PointX="0.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_RPTNG_ROLE_BU_LIST_V" Width="1.5" PointX="28.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_WP_LOCDEPT_V" Width="1.5" PointX="2.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.MCTR_WP_MASTER_V" Width="1.5" PointX="4.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCTRDbEntity.TESTVIEW1" Width="1.5" PointX="28.75" PointY="16.75" IsExpanded="true" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_ATTACH_FK01" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_COMMENT_FK01" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_HEADER_FK01" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_HEADER_FK02" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_HEADER_FK03" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_HEADER_FK04" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_HEADER_FK05" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_HEADER_FK06" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_HEADER_FK07" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_HEADER_FK08" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_LINE_ITEM_FK02" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_OFFSET_FK01" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_STATUS_HIST_FK01" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_LINE_ITEM_FK03" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_LINE_ITEM_FK04" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_LINE_ITEM_FK05" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_OVRHD_FK01" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_PER_BACKUP_FK01" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_TTD_BACKUP_FK01" ManuallyRouted="false" />
+        <AssociationConnector Association="MCTRDbEntity.MCTR_ROLE_BU_FK01" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

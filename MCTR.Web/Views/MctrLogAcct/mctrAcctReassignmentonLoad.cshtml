@@ -1,0 +1,102 @@
+﻿@model IEnumerable<MCTR.DomainEntity.MctrLogAcct>
+
+@{
+    ViewBag.Title = "MCtrOrginatorReassignment";
+}
+<script src="~/scripts/MCTR/logAccscript.js"></script>
+
+@using MCTR.Web.Security;
+@using (Html.BeginForm())
+            {
+    @Html.AntiForgeryToken()
+
+
+    foreach (var item in Model)
+    {
+
+        <!-- Affix which freeze while we vertically scroll -->
+        <section class="myAffix">
+            <section id="breadCrumb"><a href=@Url.Action("buttonPalettebutRefreshWhenButtonPressed","MctrMainMenu")>Home</a> &gt; Admin Tables  &gt; MCTR Accountant Reassignment</section>
+            <h4>MCTR Accountant Re-assignment Change Log</h4>
+            <hr>
+        </section>
+
+
+            <!-- End of header Affix -->
+        <section class="col-md-12 col-sm-12 col-xs-12 m-t-50">
+            <section id="dialog-box"></section>
+            <section class="row form-horizontal">
+                <section class="col-md-6">
+                    <section class="row">
+                        <fieldset class="mctrorigin-minht">
+                            <legend>Step I: Retrieve MCTR to be changed</legend>
+                            <ul>
+                                <li class="form-group">
+                                    <label class="control-label col-sm-3">MCTR No:</label>
+                                    <section class="col-sm-5">
+                                        @Html.TextBoxFor(Modelitem => item.Mctr_No, new { Value = "", @class = "form-control", @maxLength = 9 })
+                                    </section>
+
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label col-sm-3">BEMS Acct:</label>
+                                    <section class="col-sm-5">
+                                        @Html.TextBoxFor(modelItem => item.Bems_Acct, new { size = 8, disabled = true, @class = "form-control", @maxLength = 10 })
+                                    </section>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label col-sm-3">Status Id:</label>
+                                    <section class="col-sm-5">
+                                        @Html.TextBoxFor(modelItem => item.Status_Id, new { size = 8, @readonly = true, @class = "disabled form-control" })
+                                    </section>
+                                </li>
+                            </ul>
+
+                        </fieldset>
+                    </section>
+                </section>
+                <section class="col-md-6">
+                    <section class="row">
+                        <fieldset class="mctrorigin-minht">
+                            <legend>Step II:  Key new BEMS and put reason for making the change</legend>
+                            <ul>
+                                <li class="form-group">
+                                    <label class="control-label col-lg-3">BEMS Acct New:</label>
+                                    <section class="col-sm-5">
+                                        @Html.TextBoxFor(modelItem => item.Bems_Acct_New, new { size = 8, @class = "form-control", @maxLength = 10 })
+                                    </section>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label col-sm-3">Reason:</label>
+                                    <section class="col-sm-5">
+                                        @Html.TextBoxFor(modelItem => item.reason, new { size = 8, @class = "form-control", @maxLength = 100 })
+                                    </section>
+                                </li>
+                                <li class="form-group">
+                                    <label class="control-label col-sm-3">BEMS  Admin:</label>
+                                    <section class="col-sm-5">
+                                        @{ var Bems_Admin = @SessionPerister.BEMSID;}
+                                        @Html.TextBoxFor(modelitem => Bems_Admin, new { size = 8, disabled = true, @class = "form-control" })
+                                    </section>
+                                </li>
+                                <li class="form-group">
+                                    <label class="col-sm-3 control-label">Date Changed:</label>
+                                    <section class="col-sm-5">
+                                        <span class="form-control-static">@DateTime.Now.ToString("dd-MMM-yyyy hh:mm:ss").ToUpper()</span>
+                                    </section>
+                                </li>
+                            </ul>
+                        </fieldset>
+                    </section>
+                </section>
+            </section>
+            <section class="row button_bottom align-right">
+                <hr>
+                <button class="btn btn-primary btn-sm" id="save"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp; Save</button>
+            </section>
+        </section>
+
+
+                                                }
+
+                                            }

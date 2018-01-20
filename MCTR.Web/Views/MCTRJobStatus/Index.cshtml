@@ -1,0 +1,143 @@
+﻿@model IEnumerable<MCTR.DomainEntity.MCTRJobStatus>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="contentwrapper min-height box-round pa title mb">
+    GetMessageStatus
+    <fieldset>
+        <legend>MCTR Message Status</legend>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>MCTRJobStatus</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                @foreach (var item in Model)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(modelitem => item.Job_Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(modelitem => item.Job_Status, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(modelitem => item.Job_Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelitem => item.Eff_Date_From, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(modelitem => item.Eff_Date_From, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(modelitem => item.Eff_Date_From, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelitem => item.Eff_Date_Thru, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(modelitem => item.Eff_Date_Thru, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(modelitem => item.Eff_Date_Thru, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelitem => item.reason, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(modelitem => item.reason, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(modelitem => item.reason, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelitem => item.Bems_Admin, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(modelitem => item.Bems_Admin, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(modelitem => item.Bems_Admin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelitem => item.Date_Entered, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(modelitem => item.DateEntered, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(modelitem => item.DateEntered, "", new { @class = "text-danger" })*@
+                            @DateTime.Now
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(modelitem => item.job_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            JOB ID:          "Weekly Status"
+                        </div>
+                    </div>
+                    @*</div>*@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input id="sub" type="submit" value="Save" name="Command" class="btn btn-default" onclick="$('enterForm').submit()" />
+
+
+                        </div>
+
+                    </div>
+
+
+                }
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    </fieldset>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sub').click(function () {
+                var postdata = {
+                    Job_Status: $('#item_Job_Status').val(),
+                    Eff_Date_From: $('#item_Eff_Date_From').val(),
+                    Eff_Date_Thru: $('#item_Eff_Date_Thru').val(),
+                    Bems_Admin: $('#item_Bems_Admin').val(),
+                    reason: $('#item_reason').val(),
+                    Date_Entered: $('#item_Date_Entered').val(),
+                    job_Id: $('#item_Job_Id').val()
+
+                }
+                alert(postdata);
+                var Input = JSON.stringify(postdata);
+                alert(Input);
+                $.ajax({
+                    url: '/MCTRJobStatus/MCTRJobStatusOnInsert',
+                    type: "POST",
+                    traditional: true,
+                    data: Input,
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+
+                    },
+
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        //alert("Error --- " + errorThrown.toString() + "---" + jqXHR.toString());
+                        // alert("errorThrown");
+                    }
+                })
+
+            });
+
+
+        });
+    </script>
+}
+
+
+

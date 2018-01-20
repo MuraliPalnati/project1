@@ -1,0 +1,70 @@
+﻿<div class="header">
+    <div class=" pull-right">
+    </div>
+</div>
+
+<div class="contentwrapper min-height box-round pa title mb">
+    <fieldset>
+        <legend>Labor Rates - Current Year</legend>
+       
+               <b> Set ID (BU)</b>&nbsp;&nbsp;
+                <input type="text" class="input-medium" id="setidText" label="Set ID (BU)" value="">   
+        <br/>   <br />
+        <div class="panel-table-fullwidth ">
+            <table id="tblJQGrid1"></table>
+        </div>
+    </fieldset>
+
+</div>
+@section scripts{
+    <script src="~/JQGridReq/jquery-1.9.0.min.js"></script>
+    <script src="~/JQGridReq/jquery.jqGrid.js"></script>
+    <script src="~/JQGridReq/grid.locale-en.js"></script>
+
+    <link href="~/JQGridReq/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="~/JQGridReq/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#tblJQGrid1").jqGrid({
+                url: 'LbrRateCy/GetLaborRates',
+                datatype: "json",
+                mtype: 'GET',
+                colNames: ['SetID(BU)', 'Fiscal Year', 'Labor Rate Cd7', 'Project Trans Code', 'Rate'],
+                colModel: [
+                 { name: 'SETID', index: 'SETID', classes: 'cell', stype: 'text', editable: true },
+                { name: 'FISCAL_YEAR', index: 'FISCAL_YEAR', classes: 'cell', stype: 'integer', width: 150, editable: true },
+                { name: 'LABOR_RATE_CD7', index: 'LABOR_RATE_CD7', stype: 'text', classes: 'cell', width: 150, editable: true },
+                { name: 'PROJ_TRANS_CODE', index: 'PROJ_TRANS_CODE', classes: 'cell', stype: 'text', width: 150, editable: true },
+                { name: 'RATE', index: 'RATE', classes: 'cell', width: 150, stype: 'decimal', editable: true },
+                ],
+                rowNum: 50,
+                rowlist: [5, 20, 30],
+                sortname: 'SETID',
+                viewrecords: true,
+                sortorder: "desc",
+                autowidth: true,
+                gridview: true,
+                cellEdit: true,
+                cellsubmit: 'remote',
+                pgbuttons: true,
+                inlineNav: true,
+
+            });
+
+
+            $("#setidText").keypress(function (e, obj) {
+                if (e.which == '13') {
+                    var url = '/LbrRateCy/GetLaborRates/?lbrRateCy=' + $("#setidText").val();
+                    $("#tblJQGrid1").jqGrid('setGridParam', { url: url });
+                    $("#tblJQGrid1").trigger("reloadGrid");
+                }
+            });
+
+
+        });
+</script>
+    }
+
+
+

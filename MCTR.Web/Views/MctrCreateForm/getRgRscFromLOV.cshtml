@@ -1,0 +1,32 @@
+﻿
+
+<script src="~/scripts/MCTR/ActiveProjects.js"></script>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+</div>
+<div class="modal-body">
+    <section class="row form-group">
+        <label class="col-md-1 control-label">Find</label>
+        <section class="row no-gutter">
+            <section class="col-md-10 mr-3">
+                <input class="form-control" id="searchValue"/>
+            </section>
+            <button class="btn btn-group btn-xs" id="findBtn"><span class="glyphicon glyphicon-search font-15"></span></button>
+        </section>
+        <input type="hidden" id="activeProgFrom" value=@Model />
+    </section>
+    <section class="row">
+        <section class="col-md-12">
+            <table id="mctrActiveProjectsGrid"></table>
+            <div id="pager"></div>
+        </section>
+        <section class="col-md-12 m-t-5">
+            <section class="align-right ">
+                <button href="#" class="btn btn-group btn-XS" id="activeProjokBtn">OK</button>
+                <button href="#" data-dismiss="modal" class="btn btn-group btn-XS" id="cancelBtn">Cancel</button>
+            </section>
+        </section>
+    </section>
+</div>
+

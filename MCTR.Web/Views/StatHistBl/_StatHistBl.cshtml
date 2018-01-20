@@ -1,0 +1,46 @@
+﻿@model MCTR.DomainEntity.StatusHistHeader
+
+<script src="~/scripts/MCTR/StatusHistory.js"></script>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">MCTR Status</h4>
+</div>
+<div class="modal-body container-fluid stat-hist-modal-body">
+    <section class="row form-horizontal m-b-5 ">
+        <section class="col-md-6">
+            <section class="form-group">
+
+        <label class="control-label col-sm-6">MCTR </label>
+                    <section class="col-sm-6">
+                        @Html.TextBoxFor(model => Model.Mctr_No, new { @class="form-control", @type="text", @disabled = "disabled" })
+                    </section>
+                </section>
+                <section class="form-group">
+                    <label class="control-label col-sm-6">Originator Entered </label>
+                    <section class="col-sm-6">
+                        <input class="form-control" type="text" value="@Model.date_enter"  disabled/>
+                        @*@Html.TextBoxFor(model =>Model.date_enter.ToString("dd-MMM-yyyy").ToUpper(), new { @class = "form-control", @type = "text", @disabled = "disabled" })*@
+                    </section>
+                </section>
+        </section>
+
+        <section class="col-md-6">
+            <button class="btn btn-primary btn-sm" id ="dwnloadBtn">Download to Excel</button>
+        </section>
+    </section>
+    <section class="row" >
+        <section class="col-md-12">
+            <table id="jQGrid"></table>
+            <div id="statusHistPager"></div>
+        </section>
+        <section class="col-md-12 m-t-5">
+            <section class="align-right ">
+                <button href="#" data-dismiss="modal" class="btn btn-group btn-XS" id="closeBtn">Close</button>
+            </section>
+        </section>
+    </section>
+
+
+
+</div>

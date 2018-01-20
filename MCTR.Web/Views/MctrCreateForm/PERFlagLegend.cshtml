@@ -1,0 +1,43 @@
+﻿
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">PER Flag Legend</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <section class="row ttdLegend">
+        <section class="col-md-12">
+            <label>Year To Date Validation using the RP_MASTER_VW7 table in EAS</label>
+
+            <section class="form-group row">
+                <section class="col-md-1">
+                    <input class="green" value="G" disabled />
+                </section>
+                <section class="col-md-10 m-t-2">Line Item passes all Application edits</section>
+            </section>
+            <section class="form-group row">
+                <section class="col-md-1">
+                    <input class="yellow" value="Y" disabled />
+                </section>
+                <section class="col-md-10">FROM amount does not equal YTD amount where quantity does. Accounting may have to adjust amount.</section>
+            </section>
+            <section class="form-group row">
+                <section class="col-md-1">
+                    <input class="red" value="R" disabled />
+                </section>
+                <section class="col-md-10 m-t-2">FROM amount exceeds YTD amount. Select the PER button to view amount available.</section>
+            </section>
+            <section class="form-group row">
+                <section class="col-md-1">
+                    <input class="black" value="B" disabled />
+                </section>
+                <section class="col-md-10">FROM Line of Accounting was not found.<br> Must match with PROJECT,ACTIVITY,ACCOUNT,HOME BU,WORK BU,HOME LOC,WORK LOC,RSC,PROJ TRANS CODE if labor,HOME DEPT if entered,WORK DEPT if entered,CLASS CODE if BU Profile Class Validation Flag is Y.</section>
+            </section>
+            <section class="form-group row">
+                <section class="col-md-1">
+                    <input class="white" disabled />
+                </section>
+                <section class="col-md-10 m-t-2">Line Item needs to be validated using selected OH Base Year.</section>
+            </section>
+        </section>
+    </section>
+</div>

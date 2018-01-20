@@ -1,0 +1,280 @@
+﻿@using MCTR.Web.Security;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCTR – The Boeing Company</title>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/jquery-ui.css" />
+    <link rel="stylesheet" href="~/JQGridReq/ui.jqgrid.css" />
+    <link rel="stylesheet" href="~/Content/jqgrid.bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/style-master.css" />
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui.js"></script>
+    <script type="text/javascript" src="~/JQGridReq/grid.locale-en.js"></script>
+    <script type="text/javascript" src="~/JQGridReq/jquery.jqGrid.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.combobox.js"></script>
+    <script type=text/javascript src="~/Scripts/left-menu.js"></script>
+    <script type=text/javascript src="~/Scripts/sticky-bar.js"></script>
+    <script type=text/javascript src="~/scripts/MCTR/MCTR.js"></script>
+    <script type="text/javascript" src="~/scripts/bootbox.js"></script>
+</head>
+<body class="container-fluid fixed-body">
+    <div class="navbar-fixed-top bg-white">
+        <header class="brand-header clearfix">
+            <div class="col-md-6 col-xs-12">
+                <div class="row">
+                    <a href="#" title="Logo">
+                        <img src="~/Content/images/Boeing-Logo.jpg" alt="Boeing" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="row ">
+                    <h3>Miscellaneous Cost Transfer Request (MCTR)</h3>
+                </div>
+            </div>
+        </header>
+        <section class="well well-sm row clearfix stripe">
+            <div class="pull-left">
+                <span>Welcome<span class="bold">&nbsp; @SessionPerister.UserName</span></span>
+            </div>
+        </section>
+    </div>
+
+
+
+    <section class="row content-section pad-top-71">
+        <!--        side menu navigation-->
+        <nav class="col-md-2 col-sm-3 col-xs-4 sidebar move-right">
+            <!--            menu toggler button-->
+            <button class="menu-collapse-button move-right" data-target="sidebar" data-offcanvas="menu" data-content="right-section" title="Toggle Menu">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+            <div class="nav-menu">
+                <ul class="side-nav" id="mainMenu-collapse">
+                    @if (@SessionPerister.MESSAGEADMINBEMS != null || (SessionPerister.ACCOUNTANTROLE == "Y" || @SessionPerister.MATLACCTROLE == "Y" || @SessionPerister.COSTACCTROLE == "Y" || @SessionPerister.SRACCTROLE == "Y" || @SessionPerister.ADMINROLE == "Y"))
+                    {
+                        <li>
+                            <a id="adminTables" role="button" data-toggle="collapse" data-parent="#mainMenu-collapse" aria-expanded="true" aria- controls="subone" href="#subone" class="title">Admin Tables <span class="arrow-down"></span></a>
+                            <ul id="subone" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                                @if (@SessionPerister.ADMINROLE == "Y")
+                                {
+                                    <li><a href=@Url.Action("RoleNewUser", "RoleListNewUser")>Add MCTR User Roles</a></li>
+                                    <li><a href=@Url.Action("roleListOnload", "RoleList")>Maintain MCTR User Roles</a></li>
+                                }
+                                else
+                                {
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Administration role to add MCTR Role entries.">Add MCTR User Roles</a></li>
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Administration role to add MCTR Role entries.">Maintain MCTR User Roles</a></li>
+                                }
+                                @if (@SessionPerister.ACCOUNTANTROLE == "Y" || @SessionPerister.MATLACCTROLE == "Y" || @SessionPerister.COSTACCTROLE == "Y" || @SessionPerister.SRACCTROLE == "Y")
+                                {
+                                    @*<li><a href=@Url.Action("JournalsInProcess", "JrnlWeek")>Journals - In Process</a></li>*@
+                                    <li><a href=@Url.Action("JournalHistory", "JrnlHist")>Journals - History (200 Days)</a></li>
+                                }
+                                else
+                                {
+                                    @*<li><a data-toggle="tooltip" data-placement="right" title="You must have the appropriate Accounting Role authority to use this function.">Journals - In Process</a></li>*@
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the appropriate Accounting Role authority to use this function.">Journals - History (200 Days)</a></li>
+                                }
+                                @if (@SessionPerister.ADMINROLE == "Y" || @SessionPerister.ACCOUNTANTROLE == "Y" || @SessionPerister.COSTACCTROLE == "Y" || @SessionPerister.SRACCTROLE == "Y")
+                                {
+                                    if (SessionPerister.ADMINROLE == "Y")
+                                    {
+                                        <li><a href=@Url.Action("buProfileBuProfileOnLoad", "BuProfile")>BU Profile</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a data-toggle="tooltip" data-placement="right" title="You must have an Accounting role and the Administrator role to use this function.">BU Profile</a></li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Accountant, Cost Accountant or Senior Accountant role to use this function.">BU Profile</a></li>
+                                }
+                                @if (@SessionPerister.ACCOUNTANTROLE == "Y" || @SessionPerister.COSTACCTROLE == "Y" || @SessionPerister.SRACCTROLE == "Y")
+                                {
+                                    <li><a href=@Url.Action("transtypeGetAll", "TransType")>Trans Type/ Trans Code</a></li>
+                                }
+                                else
+                                {
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You do not have Admin rights to open this form.">Trans Type/ Trans Code</a></li>
+                                }
+                                @if (@SessionPerister.ADMINROLE == "Y")
+                                {
+                                    <li><a href=@Url.Action("MCtrOrginatorReassignment", "MctrLogOrig")>Orginator Reassignment</a></li>
+                                    <li><a href=@Url.Action("mctrAcctReassignmentonLoad", "MctrLogAcct")>Accountant Reassignment</a></li>
+                                }
+                                else
+                                {
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Administration role to add MCTR role entries.">Orginator Reassignment</a></li>
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Administration role to add MCTR Role entries.">Accountant Reassignment</a></li>
+                                }
+                                @if (@SessionPerister.ACCOUNTANTROLE == "Y" || @SessionPerister.COSTACCTROLE == "Y" || @SessionPerister.SRACCTROLE == "Y")
+                                {
+                                    <li><a href=@Url.Action("LbrRate", "LbrRateCy")>Labor Rates - Current Year</a></li>
+                                    <li><a href=@Url.Action("LaborRatesPY", "LbrRate")>Labor Rates - Prior Years</a></li>
+                                    <li><a href=@Url.Action("IncrRates", "MctrIncrRates")>Incremental OH Rates</a></li>
+                                    <li><a href=@Url.Action("MctrCompRatesView", "MctrCompRates")>Composite OH Rates</a></li>
+                                    <li><a href=@Url.Action("custtypeGetAll", "CustType")>Customer Type/Group</a></li>
+                                }
+                                else
+                                {
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Accountant, Cost Accountant or Senior Accountant role to use this function.">Labor Rates - Current Year</a></li>
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Accountant, Cost Accountant or Senior Accountant role to use this function.">Labor Rates - Prior Years</a></li>
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Accountant, Cost Accountant or Senior Accountant role to use this function.">Incremental OH Rates</a></li>
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Accountant, Cost Accountant or Senior Accountant role to use this function.">Composite OH Rates</a></li>
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You must have the Accountant, Cost Accountant or Senior Accountant role to use this function.">Customer Type/Group</a></li>
+                                }
+                                <li><a href=@Url.Action("ViewIndex", "Status")>Status IDs</a></li>
+                                @if (@SessionPerister.MESSAGEADMINBEMS != null)
+                                {
+                                    <li><a href=@Url.Action("GetData", "MCTRJobStatus")>Job Status</a></li>
+                                    <li><a href=@Url.Action("GetMessageStatus", "MCTRMessageStatus")>Message Status</a></li>
+                                }
+                                else
+                                {
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You do not have the appropriate authorization to use this function.">Job Status</a></li>
+                                    <li><a data-toggle="tooltip" data-placement="right" title="You do not have the appropriate authorization to use this function.">Message Status</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a id="adminTables" role="button"  data-parent="#mainMenu-collapse" aria-expanded="true" aria- controls="subone" href="#subone" class="title" data-toggle="tooltip" data-placement="right" title="You must have an administrator or accounting role to view these tables">Admin Tables</a><span class="arrow-down"></span></li>
+
+                    }
+
+                    <li>
+                        <a href=@Url.Action("MctrCreateFormView", "MctrCreateForm") class="title hyperlinks"> Create/View MCTR</a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("lineItemOnLoad", "LineItem") class="title hyperlinks"> Line Item Search</a>
+                    </li>
+                    <li>
+                        <a class="title" role="button" data-toggle="collapse" data-parent="#mainMenu-collapse" href="#subtwo" aria-expanded="false">Report Menu<span class="arrow-down"></span></a>
+                        <ul id="subtwo" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                            <li><a href=@Url.Action("OpenMctrView", "MctrOpenReportsBl")>Open MCTRs</a></li>
+                            <li><a href=@Url.Action("MctrJrnlByDateRp", "MctrJrnlByDateRptBl")>Journaled MCTRs - Date Sort</a></li>
+                            <li><a href=@Url.Action("Administration", "MctrAdminRptBl")>Administration</a></li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a class="title hyperlinks" href=@Url.Action("roleListOnload", "RoleList")>User List</a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Logout", "Account") class="title hyperlinks"> Logout</a>
+                    </li>
+                </ul>
+                <section class="col-md-12 form-horizontal">
+                    <section class="form-group">
+                        <section class="col-md-9 col-md-offset-1">
+                            @*<label type="text" class="control-label align-center bold">@SessionPerister.IP</label>*@
+                            <input type="text" class="form-control align-center" value=@SessionPerister.IP readonly/>
+                        </section>
+                        </section>
+                    <section class="form-group">
+                        <section class="col-md-9 col-md-offset-1">
+                           @*@Html.Label(SessionPerister.MCTRENVIRONMENT)*@
+                            @*<label type="text" class="control-label align-center bold" >@SessionPerister.MCTRENVIRONMENT</label>*@
+                            <input type="text" class="form-control align-center bold" id="envId" value=@SessionPerister.MCTRENVIRONMENT readonly />
+                        </section>
+                    </section>
+
+                </section>
+                <section class="col-md-12" id="cbox">
+                    <section class="col-md-12">
+                        <section class="checkbox">
+                            <label><input type="checkbox" id="cbox_accountant" value="cbox_accountant"> Outstanding transfers</label>
+                        </section>
+                        <section class="checkbox">
+                            <label><input type="checkbox" id="assigned" value="assigned">Assigned</label>
+                        </section>
+                    </section>
+                </section>
+            </div>
+        </nav>
+        <!--        End of side menu navigation-->
+        <!--        Data list and form area-->
+
+        <section class="col-md-10 col-sm-9 col-xs-8 col-md-offset-2 col-sm-offset-3 col-xs-offset-4 right-section">
+            <!-- modal placeholder-->
+            <div id='mctrModal' class='modal fade in'>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div id='myModalContent'></div>
+                    </div>
+                </div>
+            </div>
+            <div id='mctrModalSmall' class='modal fade in'>
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div id='myModalContentSmall'></div>
+                    </div>
+                </div>
+            </div>
+            <div id='mctrModalLarge' class='modal fade in'>
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div id='myModalContentSmall'></div>
+                    </div>
+                </div>
+            </div>
+            <div id='mctrModalXtraLarge' class='modal fade in'>
+                <div class="modal-dialog">
+                    <div class="modal-content modal-xtralg">
+                        <div id='myModalContentSmall'></div>
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+        </section>
+        <!--        end of Data list and form area-->
+
+    </section>
+
+
+    <!--    Default Footer-->
+    <footer class="footer clearfix row">
+        <div class="text-center">
+            <p>
+                <a href="#">Inside Boeing</a> <span>|</span>
+                <a href="#">My Boeing</a> <span>|</span>
+                <a href="#">Brand Center</a> <span>|</span>
+                <a href="#">Website Feedbacks</a> <span>|</span>
+                <a href="#">Content Owner</a>
+            </p>
+            <p>Copyrights 2005-2016 Boeing. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        var getBaseUrl = function (url) {
+            return '@Url.Action("palceHolderX", "palceHolderY")'.replace("/palceHolderX", url).replace("/palceHolderY", '');
+        }
+
+    </script>
+
+    <div class="modal fade in" id="loadingIcon" style="display: none;">
+        <div class="loading-backdrop" style="height: 1000px;"></div>
+        <div id="circularG">
+            <div id="circularG_1" class="circularG"></div>
+            <div id="circularG_2" class="circularG"></div>
+            <div id="circularG_3" class="circularG"></div>
+            <div id="circularG_4" class="circularG"></div>
+            <div id="circularG_5" class="circularG"></div>
+            <div id="circularG_6" class="circularG"></div>
+            <div id="circularG_7" class="circularG"></div>
+            <div id="circularG_8" class="circularG"></div>
+        </div>
+    </div>
+
+</body>
+</html>

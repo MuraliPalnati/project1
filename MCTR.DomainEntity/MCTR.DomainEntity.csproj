@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA3A66BD-32F6-4B2B-860F-7428D5E010BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MCTR.DomainEntity</RootNamespace>
+    <AssemblyName>MCTR.DomainEntity</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveState.cs" />
+    <Compile Include="Activeuser.cs" />
+    <Compile Include="AdminReportsExcel.cs" />
+    <Compile Include="CurrentStateExcel.cs" />
+    <Compile Include="AdminTables.cs" />
+    <Compile Include="MCTRPSBUSUNITTBL7MV.cs" />
+    <Compile Include="Documents.cs" />
+    <Compile Include="HeaderExcel.cs" />
+    <Compile Include="AuthBuExcel.cs" />
+    <Compile Include="BusUnit.cs" />
+    <Compile Include="BuProfile.cs" />
+    <Compile Include="ChangesMade.cs" />
+    <Compile Include="CreateMctrLov.cs" />
+    <Compile Include="CustType.cs" />
+    <Compile Include="EmplList.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="getRgProj.cs" />
+    <Compile Include="getRgSuper.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="HeaderExcels.cs" />
+    <Compile Include="Inactivations.cs" />
+    <Compile Include="JrnlHist.cs" />
+    <Compile Include="JrnlWeek.cs" />
+    <Compile Include="IncrRateEdit.cs" />
+    <Compile Include="LbrRate.cs" />
+    <Compile Include="LbrRateCy.cs" />
+    <Compile Include="LbrRateExcel.cs" />
+    <Compile Include="LineItem.cs" />
+    <Compile Include="LineItemDomainAdded.cs" />
+    <Compile Include="MainMenuLists.cs" />
+    <Compile Include="MctrApplIdV.cs" />
+    <Compile Include="MctrAttachBl.cs" />
+    <Compile Include="mctrbulkalctnv.cs" />
+    <Compile Include="MctrBusUnit.cs" />
+    <Compile Include="mctrclasscodev.cs" />
+    <Compile Include="MCTRComments.cs" />
+    <Compile Include="MctrCompRates.cs" />
+    <Compile Include="MctrCompRatesExcel.cs" />
+    <Compile Include="MctrCreateForm.cs" />
+    <Compile Include="MctrEmployee.cs" />
+    <Compile Include="MCTREmployeev.cs" />
+    <Compile Include="mctrestmtgpricgv.cs" />
+    <Compile Include="MctrHeader.cs" />
+    <Compile Include="MctrIncrRates.cs" />
+    <Compile Include="MCTRIncrRatesExcel.cs" />
+    <Compile Include="MCTRJobStatus.cs" />
+    <Compile Include="MctrJrnlByDate.cs" />
+    <Compile Include="MctrLineItemASIS.cs" />
+    <Compile Include="MctrLineItem.cs" />
+    <Compile Include="MctrLineiteminquiry.cs" />
+    <Compile Include="mctrlocndeptmv.cs" />
+    <Compile Include="mctrlocnmv.cs" />
+    <Compile Include="MctrLog.cs" />
+    <Compile Include="MctrLogAcct.cs" />
+    <Compile Include="MctrMainMenu.cs" />
+    <Compile Include="MctrMessageAdmin.cs" />
+    <Compile Include="MctrMessageStatus.cs" />
+    <Compile Include="MctrOffsetFormBl.cs" />
+    <Compile Include="MctrOhFormBl.cs" />
+    <Compile Include="MctrOpenReportsBl.cs" />
+    <Compile Include="Notification2.cs" />
+    <Compile Include="OvrhdOffsetExcel.cs" />
+    <Compile Include="MctrOverhd.cs" />
+    <Compile Include="MctrPerBackup.cs" />
+    <Compile Include="MctrRejectCode.cs" />
+    <Compile Include="MctrRpMasterV.cs" />
+    <Compile Include="mctrrpmastervw.cs" />
+    <Compile Include="MctrRptsAdmnBl.cs" />
+    <Compile Include="mctrrscmv.cs" />
+    <Compile Include="MctrTtdBackup.cs" />
+    <Compile Include="MctrWkipJrnlsBl.cs" />
+    <Compile Include="mctrwplocdeptv.cs" />
+    <Compile Include="mctrwpmasterv.cs" />
+    <Compile Include="MctrLINE_ITEM_V.cs" />
+    <Compile Include="MctrMAJOR_ACCT_V.cs" />
+    <Compile Include="MctrRP_MASTER_V.cs" />
+    <Compile Include="MctrRP_MASTER_VW.cs" />
+    <Compile Include="PerCheckBl.cs" />
+    <Compile Include="PerStatusBl.cs" />
+    <Compile Include="ReasonCode.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="RoleBu.cs" />
+    <Compile Include="RoleList.cs" />
+    <Compile Include="RoleListNewuser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleNotification.cs" />
+    <Compile Include="RptJrnlbyDate.cs" />
+    <Compile Include="StatHistBl.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="StatusHistHeader.cs" />
+    <Compile Include="StatusHistory.cs" />
+    <Compile Include="TransType.cs" />
+    <Compile Include="LabourRatePyEdit.cs" />
+    <Compile Include="TransTypeEdit.cs" />
+    <Compile Include="TtdCheckBl.cs" />
+    <Compile Include="TtdStatusBl.cs" />
+    <Compile Include="WeeklyJournalDates.cs" />
+    <Compile Include="WeeklyReportsExcel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

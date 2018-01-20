@@ -1,0 +1,25 @@
+﻿
+<script src="~/scripts/MCTR/RejectLov.js"></script>
+<div class="modal-body year-modal">
+    <section class="form-group">
+
+        <section class="row no-gutter">
+            <label class="col-md-1 control-label mr-10">Find</label>
+            <section class="col-md-8 mr-3">
+                <input class="form-control" id="searchValue" />
+            </section>
+            <input type="hidden" id="approverId" value="@ViewData["ApproverId"]" />
+            <button class="btn btn-group btn-xs search-jq" id="findBtn"><span class="glyphicon glyphicon-search font-15"></span></button>
+        </section>
+    </section>
+    <section class="row">
+        <table id="mctrAprvlRejectGrid"></table>
+        <div id="pager"></div>
+        <section class="m-t-5">
+            <section class="align-right">
+                <button href="#" class="btn btn-group btn-XS" id="okApplBtn">OK</button>
+               
+            </section>
+        </section>
+    </section>
+</div>

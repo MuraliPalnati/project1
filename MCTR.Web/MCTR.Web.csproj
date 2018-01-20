@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E4453171-A633-4EE1-B4C8-DB4717003AC4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MCTR.Web</RootNamespace>
+    <AssemblyName>MCTR.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>CA1704;CA1709;</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.0.5\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Excel">
+      <HintPath>..\packages\ExcelDLL\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.2400\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.12.1.2400\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\boeing-appName.png" />
+    <Content Include="Content\images\Boeing-Logo.jpg" />
+    <Content Include="Content\images\calendar.jpg" />
+    <Content Include="Content\images\home_boeing.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\jqgrid.bootstrap.css" />
+    <Content Include="Content\jqgrid.bootstrap.min.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\style-master.css" />
+    <Content Include="Content\style-master.min.css" />
+    <Content Include="Content\ui.jqgrid.css" />
+    <Content Include="Content\ui.jqgrid.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="JQGridReq\grid.locale-en.js" />
+    <Content Include="JQGridReq\jquery-1.9.0.min.js" />
+    <Content Include="JQGridReq\jquery-ui-1.9.2.custom.css" />
+    <Content Include="JQGridReq\jquery.jqGrid.js" />
+    <Content Include="JQGridReq\ui.jqgrid.css" />
+    <Content Include="Reports\PrintFinCtrlSort.aspx" />
+    <Content Include="Reports\PrintMCTR.aspx" />
+    <Content Include="Reports\JrnlByDate.aspx" />
+    <Content Include="Reports\OrignatorSort.aspx" />
+    <Content Include="Reports\OpenStatusSort.aspx" />
+    <Content Include="scripts\bootbox.js" />
+    <Content Include="scripts\bootbox.min.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Documents\Access\gainingAccess.pptx" />
+    <Content Include="Documents\BatchLoad\ExcelTemplate\MCTR_BATCH_TEMPLATE.xls" />
+    <Content Include="Documents\BatchLoad\TemplateInstructions\MCTR_Batch_Upload_Instructions.pdf" />
+    <Content Include="Documents\Overview\overview.pptx" />
+    <Content Include="Documents\Overview\EASFields\easFields.pptx" />
+    <Content Include="Documents\Overview\WorkFlow\workFlow.pptx" />
+    <Content Include="Documents\Resource\Troubleshooting\troubleshooting.docx" />
+    <Content Include="Documents\UserGuide\mctr_user_guide.docx" />
+    <None Include="Properties\PublishProfiles\Atma.Web.pubxml" />
+    <None Include="Properties\PublishProfiles\ATMAWeb.pubxml" />
+    <None Include="Properties\PublishProfiles\MCTR.pubxml" />
+    <Content Include="ReportMCTR.xsc">
+      <DependentUpon>ReportMCTR.xsd</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\Web.pubxml" />
+    <None Include="ReportMCTR.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportMCTR.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="ReportMCTR.xss">
+      <DependentUpon>ReportMCTR.xsd</DependentUpon>
+    </Content>
+    <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\confirm-simple.js" />
+    <Content Include="scripts\grid.locale-en.js" />
+    <Content Include="scripts\jquery-1.10.2.js" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="scripts\jquery-1.11.3.js" />
+    <Content Include="scripts\jquery-1.11.3.min.js" />
+    <Content Include="scripts\jquery-ui-1.10.0.js" />
+    <Content Include="scripts\jquery-ui-1.10.0.min.js" />
+    <Content Include="scripts\jquery-ui.js" />
+    <Content Include="scripts\jquery-ui.min.js" />
+    <Content Include="scripts\jquery.combobox.js" />
+    <Content Include="scripts\jquery.jqGrid.js" />
+    <Content Include="scripts\jquery.jqGrid.min.js" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.jqGrid.src.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\left-menu.js" />
+    <Content Include="scripts\logOrigscript.js" />
+    <Content Include="scripts\MctrRoleUserList.js" />
+    <Content Include="scripts\MCTR\ActiveProjects.js" />
+    <Content Include="scripts\MCTR\ActiveProjectsTo.js" />
+    <Content Include="scripts\MCTR\AdminReportBU.js" />
+    <Content Include="scripts\MCTR\AdminReportJournalDate.js" />
+    <Content Include="scripts\MCTR\AdminReports.js" />
+    <Content Include="scripts\MCTR\AffiliateFrom.js" />
+    <Content Include="scripts\MCTR\ApplJrnlsId.js" />
+    <Content Include="scripts\MCTR\ApproverPopUp.js" />
+    <Content Include="scripts\MCTR\Attachments.js" />
+    <Content Include="scripts\MCTR\BUGLFromLOV.js" />
+    <Content Include="scripts\MCTR\BulkFrom.js" />
+    <Content Include="scripts\MCTR\Bulkto.js" />
+    <Content Include="scripts\MCTR\BUGroupPopUp.js" />
+    <Content Include="scripts\MCTR\BUProfile.js" />
+    <Content Include="scripts\MCTR\BUProfileAdminPopup.js" />
+    <Content Include="scripts\MCTR\BUProfileGroupPopUp.js" />
+    <Content Include="scripts\MCTR\Comments.js" />
+    <Content Include="scripts\MCTR\CompositeOHRates.js" />
+    <Content Include="scripts\MCTR\CreateViewMCTR.js" />
+    <Content Include="scripts\MCTR\CustType.js" />
+    <Content Include="scripts\MCTR\FinControllers.js" />
+    <Content Include="scripts\MCTR\HomeDepartmentListTo.js" />
+    <Content Include="scripts\MCTR\HomeDepartmentListFrom.js" />
+    <Content Include="scripts\MCTR\IncrRates.js" />
+    <Content Include="scripts\MCTR\IncrRatesCompOH.js" />
+    <Content Include="scripts\MCTR\Inquire.js" />
+    <Content Include="scripts\MCTR\JournalHistRptFromDate.js" />
+    <Content Include="scripts\MCTR\JournalHistRptToDate.js" />
+    <Content Include="scripts\MCTR\LineItemSearch.js" />
+    <Content Include="scripts\MCTR\MctrOverheadForm.js" />
+    <Content Include="scripts\MCTR\OHform.js" />
+    <Content Include="scripts\MCTR\Offset.js" />
+    <Content Include="scripts\MCTR\JournalsInProcess.js" />
+    <Content Include="scripts\MCTR\JustificationOrPrevMeasures.js" />
+    <Content Include="scripts\MCTR\ListCecEpFrom.js" />
+    <Content Include="scripts\MCTR\ListCecEpTo.js" />
+    <Content Include="scripts\MCTR\ListClassCodeFrom.js" />
+    <Content Include="scripts\MCTR\ListClassCodeTo.js" />
+    <Content Include="scripts\MCTR\HomeDeptLocFrom.js" />
+    <Content Include="scripts\MCTR\HomeDeptLocTo.js" />
+    <Content Include="scripts\MCTR\ListHomeLocFrom.js" />
+    <Content Include="scripts\MCTR\ListHomeLocTo.js" />
+    <Content Include="scripts\MCTR\ListWorkDeptFrom.js" />
+    <Content Include="scripts\MCTR\ListWorkDeptTo.js" />
+    <Content Include="scripts\MCTR\ListWorkLocFrom.js" />
+    <Content Include="scripts\MCTR\ListWorkLocTo.js" />
+    <Content Include="scripts\MCTR\logAccscript.js" />
+    <Content Include="scripts\MCTR\MctrCreateformValidations.js" />
+    <Content Include="scripts\MCTR\OHfromTo.js" />
+    <Content Include="scripts\MCTR\Originators.js" />
+    <Content Include="scripts\MCTR\ProjectPromptFrom.js" />
+    <Content Include="scripts\MCTR\ProjectPromptTo.js" />
+    <Content Include="scripts\MCTR\ProjectToPrompt.js" />
+    <Content Include="scripts\MCTR\ReasonCode.js" />
+    <Content Include="scripts\MCTR\RejectLov.js" />
+    <Content Include="scripts\MCTR\RoleBuGroupPopup.js" />
+    <Content Include="scripts\MCTR\RscFrom.js" />
+    <Content Include="scripts\MCTR\RscTo.js" />
+    <Content Include="scripts\MCTR\ProjectFromPrompt.js" />
+    <Content Include="scripts\MCTR\TransTypeCodeCombo.js" />
+    <Content Include="scripts\MCTR\JobStatus.js" />
+    <Content Include="scripts\MCTR\JournalHistDate.js" />
+    <Content Include="scripts\MCTR\JournalsHistory.js" />
+    <Content Include="scripts\MCTR\JournalsInProcessPopup.js" />
+    <Content Include="scripts\MCTR\LaborRate.js" />
+    <Content Include="scripts\MCTR\LaborRatePY.js" />
+    <Content Include="scripts\MCTR\left-menu.js" />
+    <Content Include="scripts\MCTR\logOrigscript.js" />
+    <Content Include="scripts\MCTR\MCTR.js" />
+    <Content Include="scripts\MCTR\MctrCreateFormHeader.js" />
+    <Content Include="scripts\MCTR\MctrCreateFormHeading.js" />
+    <Content Include="scripts\MCTR\MCTRRole.js" />
+    <Content Include="scripts\MCTR\MctrRoleUserList.js" />
+    <Content Include="scripts\MCTR\MessageStatus.js" />
+    <Content Include="scripts\MCTR\OHBaseYear.js" />
+    <Content Include="scripts\MCTR\RoleBU.js" />
+    <Content Include="scripts\MCTR\RoleUser.js" />
+    <Content Include="scripts\MCTR\Status.js" />
+    <Content Include="scripts\MCTR\StatusHistory.js" />
+    <Content Include="scripts\MCTR\TotalToDateValidation.js" />
+    <Content Include="scripts\MCTR\TransType.js" />
+    <Content Include="scripts\MCTR\ValidaitonsCreateForm.js" />
+    <Content Include="scripts\MCTR\WorkDeptLocFrom.js" />
+    <Content Include="scripts\MCTR\WorkDeptLocTo.js" />
+    <Content Include="scripts\MCTR\WpdFrom.js" />
+    <Content Include="scripts\MCTR\WpdTo.js" />
+    <Content Include="scripts\MCTR\YearToDateValidation.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="scripts\modernizr.custom.26435.js" />
+    <Content Include="scripts\moment-with-locales.js" />
+    <Content Include="scripts\moment-with-locales.min.js" />
+    <Content Include="scripts\moment.js" />
+    <Content Include="scripts\moment.min.js" />
+    <Content Include="scripts\npm.js" />
+    <Content Include="scripts\oem-search.js" />
+    <Content Include="scripts\respond.min.js" />
+    <Content Include="scripts\sticky-bar.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\ErrorMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BuProfileController.cs" />
+    <Compile Include="Controllers\CustomErrorHandler.cs" />
+    <Compile Include="Controllers\CustTypeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JrnlHistController.cs" />
+    <Compile Include="Controllers\JrnlWeekController.cs" />
+    <Compile Include="Controllers\LbrRateController.cs" />
+    <Compile Include="Controllers\LbrRateCyController.cs" />
+    <Compile Include="Controllers\LineItemController.cs" />
+    <Compile Include="Controllers\MctrAdminRptBlController.cs" />
+    <Compile Include="Controllers\MctrAttachBlController.cs" />
+    <Compile Include="Controllers\MctrCompRatesController.cs" />
+    <Compile Include="Controllers\MctrCreateFormController.cs" />
+    <Compile Include="Controllers\MctrIncrRatesController.cs" />
+    <Compile Include="Controllers\MCTRJobStatusController.cs" />
+    <Compile Include="Controllers\MctrJrnlByDateRptBlController.cs" />
+    <Compile Include="Controllers\MctrLogAcctController.cs" />
+    <Compile Include="Controllers\MctrLogOrigController.cs" />
+    <Compile Include="Controllers\MctrMainMenuController.cs" />
+    <Compile Include="Controllers\MctrMessageStatusController.cs" />
+    <Compile Include="Controllers\MctrOffsetFormBlController.cs" />
+    <Compile Include="Controllers\MctrOhFormBlController.cs" />
+    <Compile Include="Controllers\MctrOpenReportsBlController.cs" />
+    <Compile Include="Controllers\MctrRptsAdmnBlController.cs" />
+    <Compile Include="Controllers\MctrWkipJrnlsBlController.cs" />
+    <Compile Include="Controllers\PerCheckBlController.cs" />
+    <Compile Include="Controllers\PerStatusBlController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\RoleBuController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\RoleListController.cs" />
+    <Compile Include="Controllers\StatHistBlController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\TransTypeController.cs" />
+    <Compile Include="Controllers\TtdCheckBlController.cs" />
+    <Compile Include="Controllers\TtdStatusBlController.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\AccountHandler.cs" />
+    <Compile Include="Handlers\BuProfileHandler.cs" />
+    <Compile Include="Handlers\CustTypeHandler.cs" />
+    <Compile Include="Handlers\JrnlHistHandler.cs" />
+    <Compile Include="Handlers\JrnlWeekHandler.cs" />
+    <Compile Include="Handlers\LbrRateCyHandler.cs" />
+    <Compile Include="Handlers\LbrRateHandler.cs" />
+    <Compile Include="Handlers\LineItemHandler.cs" />
+    <Compile Include="Handlers\MctrAttachBlHandler.cs" />
+    <Compile Include="Handlers\MctrCompRatesHandler.cs" />
+    <Compile Include="Handlers\MctrCreateFormHandler.cs" />
+    <Compile Include="Handlers\MctrIncrRatesHandler.cs" />
+    <Compile Include="Handlers\MCTRJobStatusHandler.cs" />
+    <Compile Include="Handlers\MctrJrnlByDateRptBlHandler.cs" />
+    <Compile Include="Handlers\MctrLogAcctHandler.cs" />
+    <Compile Include="Handlers\MctrLogHandler.cs" />
+    <Compile Include="Handlers\MctrMainMenuHandler.cs" />
+    <Compile Include="Handlers\MctrMessageStatusHandler.cs" />
+    <Compile Include="Handlers\MctrOffsetFormBlHandler.cs" />
+    <Compile Include="Handlers\MctrOhFormBlHandler.cs" />
+    <Compile Include="Handlers\MctrOpenReportsBlHandler.cs" />
+    <Compile Include="Handlers\MctrRptsAdmnBlHandler.cs" />
+    <Compile Include="Handlers\MctrWkipJrnlsBlHandler.cs" />
+    <Compile Include="Handlers\PerCheckBlHandler.cs" />
+    <Compile Include="Handlers\PerStatusBlHandler.cs" />
+    <Compile Include="Handlers\RoleBuHandler.cs" />
+    <Compile Include="Handlers\RoleHandler.cs" />
+    <Compile Include="Handlers\RoleListHandler.cs" />
+    <Compile Include="Handlers\RoleListNewuserHandler.cs" />
+    <Compile Include="Controllers\RoleListNewuserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\HandlerUtil.cs" />
+    <Compile Include="Handlers\StatHistBlHandler.cs" />
+    <Compile Include="Handlers\StatusHandler.cs" />
+    <Compile Include="Handlers\TransTypeHandler.cs" />
+    <Compile Include="Handlers\TtdCheckBlHandler.cs" />
+    <Compile Include="Handlers\ReportHandler.cs" />
+    <Compile Include="Handlers\TtdStatusBlHandler.cs" />
+    <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportMCTR.cs">
+      <DependentUpon>ReportMCTR.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportMCTR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportMCTR.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PrintFinCtrlSort.aspx.cs">
+      <DependentUpon>PrintFinCtrlSort.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\PrintFinCtrlSort.aspx.designer.cs">
+      <DependentUpon>PrintFinCtrlSort.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PrintMCTR.aspx.cs">
+      <DependentUpon>PrintMCTR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\PrintMCTR.aspx.designer.cs">
+      <DependentUpon>PrintMCTR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\JrnlByDate.aspx.cs">
+      <DependentUpon>JrnlByDate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\JrnlByDate.aspx.designer.cs">
+      <DependentUpon>JrnlByDate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OrignatorSort.aspx.cs">
+      <DependentUpon>OrignatorSort.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\OrignatorSort.aspx.designer.cs">
+      <DependentUpon>OrignatorSort.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OpenStatusSort.aspx.cs">
+      <DependentUpon>OpenStatusSort.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\OpenStatusSort.aspx.designer.cs">
+      <DependentUpon>OpenStatusSort.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Security\CustomPrincipal.cs" />
+    <Compile Include="Security\SessionPerister.cs" />
+    <Compile Include="Util\DocumentsUtil.cs" />
+    <Compile Include="Util\Download.cs" />
+    <Compile Include="Util\EmailNotification.cs" />
+    <Compile Include="Util\ReadExcel.cs" />
+    <Compile Include="Util\ReportsUtil.cs" />
+    <Compile Include="ViewModel\RoleViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\CustType\custtypeGetAll.cshtml" />
+    <Content Include="Views\Status\ViewIndex.cshtml" />
+    <Content Include="Views\LbrRateCy\LbrRate.cshtml" />
+    <Content Include="Views\TransType\transtypeGetAll.cshtml" />
+    <Content Include="Views\MctrLogOrig\MCtrOrginatorReassignment.cshtml" />
+    <Content Include="Views\MctrMessageStatus\GetMessageStatus.cshtml" />
+    <Content Include="Views\MCTRJobStatus\GetData.cshtml" />
+    <Content Include="Views\RoleListNewuser\RoleNewUser.cshtml" />
+    <Content Include="Views\RoleList\roleListOnLoad.cshtml" />
+    <Content Include="Views\Role\Role.cshtml" />
+    <Content Include="Views\LbrRate\LaborRatesPY.cshtml" />
+    <Content Include="Views\MctrIncrRates\IncrRates.cshtml" />
+    <Content Include="Views\RoleBU\_RoleModalDialog.cshtml" />
+    <Content Include="Views\BUProfile\BUProfile.cshtml" />
+    <Content Include="Views\MctrLogAcct\mctrAcctReassignmentonLoad.cshtml" />
+    <Content Include="Views\MctrCreateForm\MctrCreateFormView.cshtml" />
+    <Content Include="Views\BUProfile\getRgAdminLOV.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\MctrMainMenu\buttonPalettebutRefreshWhenButtonPressed.cshtml" />
+    <Content Include="Views\Account\LoggedOut.cshtml" />
+    <Content Include="Views\StatHistBl\_StatHistBl.cshtml" />
+    <Content Include="Views\JrnlWeek\JournalsInProcess.cshtml" />
+    <Content Include="Views\JrnlHist\JournalHistory.cshtml" />
+    <Content Include="Views\MctrCreateForm\TTDFlagLegend.cshtml" />
+    <Content Include="Views\JrnlHist\JHistDateLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\PERFlagLegend.cshtml" />
+    <Content Include="Views\MctrJrnlByDateRptBl\MctrJrnlByDateRp.cshtml" />
+    <Content Include="Views\MctrCreateForm\BUGroupPopUp.cshtml" />
+    <Content Include="Views\RoleBU\BUGroupDialog.cshtml" />
+    <Content Include="Views\TtdCheckBl\ttdCheckLoad.cshtml" />
+    <Content Include="Views\PerCheckBl\perCheckLoad.cshtml" />
+    <Content Include="Views\MctrWkipJrnlsBl\JournalsInProcessPopUp.cshtml" />
+    <Content Include="Views\MctrCreateForm\ApproverLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\getRgYearLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\ActiveProjects.cshtml" />
+    <Content Include="Views\MctrCreateForm\getRgRscFromLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\getRgTransFromLOV.cshtml" />
+    <Content Include="Views\MctrAttachBl\MctrAttachBl.cshtml" />
+    <Content Include="Views\MctrCompRates\MctrCompRatesView.cshtml" />
+    <Content Include="Views\MctrCreateForm\getRgListHomeDeptFromLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\getRgApplLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\MctrComments.cshtml" />
+    <Content Include="Views\MctrCreateForm\getRgReasonLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\ActiveProjectsTo.cshtml" />
+    <Content Include="Views\MctrCreateForm\JustificationWindow.cshtml" />
+    <Content Include="Views\MctrCreateForm\getRgListHomeDeptToLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\TTDInquire.cshtml" />
+    <Content Include="Views\MctrCreateForm\AffiliateFrom.cshtml" />
+    <Content Include="Views\MctrCreateForm\BulkFrom.cshtml" />
+    <Content Include="Views\MctrCreateForm\Bulkto.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListCecEpFrom.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListCecEpTo.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListClassCodeFrom.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListClassCodeTo.cshtml" />
+    <Content Include="Views\MctrCreateForm\HomeDeptLocFromLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\HomeDeptLocToLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListHomeLocFrom.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListWorkDeptFrom.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListWorkDeptTo.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListWorkLocFrom.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListWorkLocTo.cshtml" />
+    <Content Include="Views\MctrCreateForm\RscFrom.cshtml" />
+    <Content Include="Views\MctrCreateForm\RscTo.cshtml" />
+    <Content Include="Views\MctrCreateForm\WorkDeptLocFromLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\WorkDeptLocToLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\WpdFrom.cshtml" />
+    <Content Include="Views\MctrCreateForm\WpdTo.cshtml" />
+    <Content Include="Views\MctrOffsetFormBl\MctrOffsetForm.cshtml" />
+    <Content Include="Views\MctrOhFormBl\MctrOHForm.cshtml" />
+    <Content Include="Views\LineItem\LineItem.cshtml" />
+    <Content Include="Views\MctrOpenReportsBl\OpenMctrView.cshtml" />
+    <Content Include="Views\MctrAdminRptBl\MctrAdminRptBl.cshtml" />
+    <Content Include="Views\MctrOpenReportsBl\selectionbutBuWhenButtonPressedOpenLOV.cshtml" />
+    <Content Include="Views\MctrJrnlByDateRptBl\getRgFinCtlLOV.cshtml" />
+    <Content Include="Views\MctrJrnlByDateRptBl\getRgOrigLOV.cshtml" />
+    <Content Include="Views\MctrJrnlByDateRptBl\getRgFromDateLOV.cshtml" />
+    <Content Include="Views\MctrJrnlByDateRptBl\getRgToDateLOV.cshtml" />
+    <Content Include="Views\MctrCompRates\getRgRateILOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\ProjectFromPromptWindow.cshtml" />
+    <Content Include="Views\MctrCreateForm\ProjectToPromptWindow.cshtml" />
+    <Content Include="Views\MctrCreateForm\getRgLOVReject.cshtml" />
+    <Content Include="Views\MctrRptsAdmnBl\getAdminRptRgBuLOV.cshtml" />
+    <Content Include="Views\MctrRptsAdmnBl\getAdminRgToDateLOV.cshtml" />
+    <Content Include="Views\MctrOhFormBl\MctrOverheadForm.cshtml" />
+    <Content Include="Views\MctrOhFormBl\MctrOHFormTo.cshtml" />
+    <Content Include="Views\MctrCreateForm\ListHomeLocTo.cshtml" />
+    <Content Include="Views\MctrCreateForm\ProjToPromptLOV.cshtml" />
+    <Content Include="Views\MctrCreateForm\ProjFromPromptLOV.cshtml" />
+    <Content Include="Views\MctrMainMenu\MessageWindow.cshtml" />
+    <Content Include="Views\Account\ValidUser.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Documents\Resource\DesktopIcons\" />
+    <Folder Include="Documents\Upgrades\" />
+    <Folder Include="scripts\i18n\" />
+    <Folder Include="Views\Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MCTR.BusinessInterface\MCTR.BusinessInterface.csproj">
+      <Project>{0e2246f2-3ff2-4652-a01a-78ab65347270}</Project>
+      <Name>MCTR.BusinessInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.Business\MCTR.Business.csproj">
+      <Project>{07f00c29-812d-4458-b3fa-0d4ecbc2cd82}</Project>
+      <Name>MCTR.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.DataAccess\MCTR.DataAccess.csproj">
+      <Project>{a2ad499d-028b-433e-bc40-dce1d4e763a6}</Project>
+      <Name>MCTR.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.DataEntity\MCTR.DataEntity.csproj">
+      <Project>{efe689ea-67d0-49f4-83a8-deaad938e11f}</Project>
+      <Name>MCTR.DataEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.DomainEntity\MCTR.DomainEntity.csproj">
+      <Project>{ca3a66bd-32f6-4b2b-860f-7428d5e010be}</Project>
+      <Name>MCTR.DomainEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCTR.RESTService\MCTR.RESTService.csproj">
+      <Project>{a8f95a83-2dc1-42bb-b6a8-ae4bb55395cf}</Project>
+      <Name>MCTR.RESTService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\ErrorMessages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReportFiles\FinCtrlSort.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportFiles\JrnlbyDate.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportFiles\OpenStatusSort.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportFiles\OriginatorSort.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportFiles\PrintMCTR.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64624</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64624/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

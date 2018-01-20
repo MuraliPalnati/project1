@@ -1,0 +1,41 @@
+﻿
+@model MCTR.DomainEntity.MctrCreateForm
+<script src="~/scripts/MCTR/JustificationOrPrevMeasures.js"></script>
+
+@*<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" id="justificationClose" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">MCTR Justification Window</h4>
+</div>*@
+<div class="modal-body justification">
+    <section class="row form-horizontal">
+        <section class="col-md-12">
+            <section class="form-group">
+                <label class="col-sm-12">Provide a 'Justification' explaining where the costs were originally charged and why the costs should be transferred.</label>
+            </section>
+            <section class="form-group">
+                <section class="col-sm-9">
+                    <textarea class="form-control col-sm-2" title="Enter MCTR Justification (Required)" rows="10" id="justification">@Model.justification</textarea>
+                </section>
+            </section>
+
+            <section class="form-group">
+                <label class="col-sm-12">Provide Preventive Measure(s) - steps taken to prevent the error from occuring again.</label>
+            </section>
+            <section class="form-group">
+                <section class="col-sm-9">
+                    <textarea type="text" class="form-control" id="preventiveMeasures" cols="92" rows="10" aria-multiline="true" >@Model.preventativeMeasures</textarea> 
+                   
+                    @Html.ValidationMessageFor(model => model.justification, "")
+                </section>
+            </section>
+        </section>
+        <section class="col-md-12 m-t-5">
+            <section class="align-center ">
+                <a href="#" class="btn btn-default btn-XS" id="JusOrPrevSaveBtn">Save</a>
+                <a href="#" data-dismiss="modal" class="btn btn-default btn-XS" id="JusOrPrevCloseBtn">Close</a>
+            </section>
+        </section>
+    </section>
+
+</div>
+

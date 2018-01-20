@@ -1,0 +1,26 @@
+﻿
+<script src="~/scripts/MCTR/TransTypeCodeCombo.js"></script>
+
+
+    <section class="row form-group">
+        <label class="col-md-1 control-label">Find</label>
+        <section class="row no-gutter">
+            <section class="col-md-10 mr-3">
+                <input class="form-control" id="searchValue" />
+            </section>
+            <button class="btn btn-group btn-xs" id="findBtn"><span class="glyphicon glyphicon-search font-15"></span></button>
+        </section>
+        <input type="hidden" id="rowId" value=@Model />
+    </section>
+    <section class="row">
+        <section class="col-md-12">
+            <table id="mctrTransTypeGrid"></table>
+            <section id="pager"></section>
+        </section>
+        <section class="col-md-12 m-t-5">
+            <section class="align-right ">
+                <button href="#" class="btn btn-group btn-XS" id="mctrTransTypeokBtn">OK</button>
+                <button href="#" data-dismiss="modal" class="btn btn-group btn-XS" id="cancelBtn">Cancel</button>
+            </section>
+        </section>
+    </section>
